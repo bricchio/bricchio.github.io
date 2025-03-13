@@ -10,9 +10,16 @@
         <link rel="stylesheet" href="/styles.css" type="text/css" />
     </head>
     <body>
+        <div class="header"></div>
         <main>
-
+            <section class="section" id="banner"></section>
+            <section class="section" id="about-me"></section>
+            <section class="section" id="work-history"></section>
+            <section class="section" id="portfolio"></section>
+            <section class="section" id="testimonials"></section>
+            <section class="section" id="contact"></section>
         </main>
+        <div class="footer"></div>
     </body>
     
 </html>
