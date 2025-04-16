@@ -1,0 +1,50 @@
+// @use "../abstracts/functions";
+// @use "../abstracts/mixins";
+// @use "../abstracts/variables";
+
+@use '../abstracts/index';
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family:index.$font-web;
+}
+
+h1,
+.h1 {
+    font-size: index.$h1;
+}
+
+h2,
+.h2 {
+    font-size:index.$h2;
+}
+
+h3,
+.h3 {
+    font-size:index.$h3;
+}
+
+h4,
+.h4 {
+    font-size:index.$h4;
+}
+
+h5,
+.h5 {
+    font-size:index.$h5;
+}
+
+h6,
+.h6 {
+    font-size:index.$h6;
+}
+
+p {
+    font-family:index.$font-web;
+    font-size:index.$p;
+}

@@ -1,0 +1,88 @@
+@use "sass:math" as math;
+
+
+// ------------------------------------
+// Typography
+// ------------------------------------
+$font-base: 16;
+$font-base-px: $font-base + 'px';
+$font-body: 18;
+$font-body-px: $font-body + 'px';
+$font-serif: serif;
+$font-sans-serif: sans-serif;
+$font-web: 'Roboto', $font-sans-serif;
+$font-headings: $font-web;
+
+$h1: math.div(36, $font-base) + em;
+$h2: math.div(32, $font-base) + em;
+$h3: math.div(28, $font-base) + em;
+$h4: math.div(24, $font-base) + em;
+$h5: math.div(20, $font-base) + em;
+$h6: math.div(16, $font-base) + em;
+$p: math.div($font-body, $font-base) + em;
+
+// ------------------------------------
+// Colors
+// ------------------------------------
+
+$color-primary: #000;
+$color-secondary: #ccc;
+$color-grey-light: #ccc;
+$color-grey-medium: #ddd;
+$color-grey-dark: #eee;
+$color-black: #000;
+$color-white: #FFF;
+$color-link :$color-primary;
+$color-background: $color-secondary;
+$color-error: red;
+
+// ------------------------------------
+// Transitions
+// ------------------------------------
+
+$transition-slow: 0.5s;
+$transition-normal: 0.3s;
+$trasition-fast: 0.2s;
+
+// ------------------------------------
+// Breakpoints
+// ------------------------------------
+
+$screen-sm: 481;
+$screen-sm-px: $screen-sm + 'px';
+$screen-sm-em: math.div($screen-sm, $font-base) + 'em';
+$screen-md: 769;
+$screen-md-px: $screen-md + 'px';
+$screen-md-em: math.div($screen-md, $font-base) + 'em';
+$screen-lg: 1280;
+$screen-lg-px: $screen-lg + 'px';
+$screen-lg-em: math.div($screen-lg, $font-base) + 'em';
+
+
+// ------------------------------------
+// Form Elements
+// ------------------------------------
+
+$border-radius: 4px;
+
+// ------------------------------------
+// Padding & Margin Spacing
+// ------------------------------------
+
+// Maximum number of 'em' units for padding and margins
+$max: 10;
+
+// Direction of margin and padding
+$direction: (
+    "": "",
+    "-top": "t",
+    "-right": "r",
+    "-bottom": "b",
+    "-left": "l",
+);
+
+// Abbreviated names of padding and margin attributes
+$pmAttr: (
+    "padding": ".p",
+    "margin": ".m",
+);

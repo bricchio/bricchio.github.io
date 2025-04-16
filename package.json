@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bricchio/bricchio.github.io.git"
@@ -23,6 +24,14 @@
   },
   "homepage": "https://github.com/bricchio/bricchio.github.io#readme",
   "devDependencies": {
-    "gulp-cli": "^3.0.0"
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^9.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^3.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^9.1.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-webp": "^5.0.0",
+    "sass": "^1.86.0"
   }
 }

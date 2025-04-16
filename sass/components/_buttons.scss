@@ -1,0 +1,16 @@
+@use '../abstracts/index';
+
+button,
+.btn {
+    @include index.flex-center;
+    background-color: index.$color-primary;
+    background-image: none;
+    border:1px solid index.$color-black;
+    border-radius: index.$border-radius;
+    color: index.$color-white;
+    font-size: index.$font-body-px;
+    font-family: index.$font-web;
+    @include index.for-size(screen-md) {
+        font-size:2rem;
+    }
+}

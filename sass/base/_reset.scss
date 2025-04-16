@@ -1,0 +1,42 @@
+@use '../abstracts/index';
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Prevent font size inflation */
+html {
+    text-size-adjust: none;
+    color:index.$color-white;
+}  
+
+// Core body defaults
+body {
+    min-height:100vh;
+    line-height:1.5;
+    font-family:index.$font-web;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family:inherit;
+    font-size:inherit;
+}
+
+ul,
+ul[role='list'],
+ol,
+ol[role='list'] {
+    list-style:none;
+}
+
+a {
+    color:index.$color-primary;
+    text-decoration:none
+}

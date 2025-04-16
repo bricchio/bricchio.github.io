@@ -1,1 +1,26 @@
-@use 'base/_index';
+
+// 1. Base
+@use 'base/fonts';
+@use 'base/reset';
+@use 'base/global';
+@use 'base/root';
+@use 'base/colors';
+@use 'base/helpers';
+
+// 2. Components
+@use 'components/buttons';
+
+// 3. Layouts
+@use 'layouts/flex';
+@use 'layouts/grid';
+@use 'layouts/spacing';
+@use 'layouts/header';
+@use 'layouts/sections';
+@use 'layouts/footer';
+
+// 4. Pages
+@use 'pages/home';
+
+// 5. Themes
+
+// 6. Vendors

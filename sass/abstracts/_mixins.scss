@@ -1,0 +1,166 @@
+@use '../abstracts/variables';
+@use 'sass:map';
+
+// ------------------------------------
+// Flex Container
+// ------------------------------------
+
+// m = main axis (justify-content)
+// c = cross axis (align-items)
+// w = wrap or space along (align-content)
+// self = align-self
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    min-width:0;
+    min-height:0;
+}
+
+@mixin flex-center {
+    @include flexbox;
+    justify-content:center;
+    align-items:center;
+}
+
+// ------------------------------------
+// Flex Row & Justify Content
+// ------------------------------------
+
+@mixin flex-row {
+    @include flexbox;
+    -ms-flex-direction: row;
+    flex-direction:row;
+}
+@mixin flex-m-start {justify-content: flex-start;}
+@mixin flex-m-end {justify-content: end;}
+@mixin flex-m-center {justify-content:center;}
+@mixin flex-m-space-between {justify-content:space-between;}
+@mixin flex-m-space-around {justify-content:space-around;}
+@mixin flex-m-space-evenly {justify-content:space-evenly;}
+
+// ------------------------------------
+// Flex Column & Align Items
+// ------------------------------------
+
+@mixin flex-col {
+    @include flexbox;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+@mixin flex-c-start {align-items: start;}
+@mixin flex-c-end {align-items: end;}
+@mixin flex-c-center {align-items: center;}
+@mixin flex-c-stretch {align-items: stretch;}
+@mixin flex-c-baseline {align-items: baseline;}
+
+// ------------------------------------
+// Flex Column & Align Content
+// ------------------------------------
+
+@mixin flex-w-start {align-content: start;}
+@mixin flex-w-end {align-content: end;}
+@mixin flex-w-center {align-content: center;}
+@mixin flex-w-stretch {align-content: stretch;}
+@mixin flex-w-space-between {align-content: space-between;}
+@mixin flex-w-space-around {align-content: space-around;}
+
+// ------------------------------------
+// Flex Column & Align Self
+// ------------------------------------
+
+@mixin flex-self-start {align-self: flex-start;}
+@mixin flex-self-end {align-self: flex-end;}
+@mixin flex-self-center {align-self: center;}
+@mixin flex-self-baseline {align-self: baseline;}
+@mixin flex-self-stretch {align-self: stretch;}
+
+// ------------------------------------
+// Flex Items
+// ------------------------------------
+
+@mixin flex-initial {flex: 0 1 auto;} // aka "flex-shrink"
+@mixin flex-grow {flex:1 1 auto;}
+@mixin flex-auto {flex: 1 1 auto;}
+@mixin flex-none {flex: 0 0 auto;}
+
+// ------------------------------------
+// Grid
+// ------------------------------------
+
+@mixin grid {
+    display: -moz-grid;
+    display: -ms-grid;
+    display: grid;
+}
+@mixin grid-inline {
+    display: -moz-inline-grid;
+    display: -ms-inline-grid;
+    display: inline-grid;
+}
+
+// ------------------------------------
+// Breakpoints
+// ------------------------------------
+
+@mixin for-size($size) {
+    @if $size == screen-sm {
+        @media all and (min-width: variables.$screen-sm-px) {
+            @content;
+        }
+    } @else if $size == screen-md {
+        @media all and (min-width: variables.$screen-md-px) {
+            @content;
+        }
+    } @else if $size == screen-lg {
+        @media all and (min-width: variables.$screen-lg-px) {
+            @content;
+        }
+    }
+}
+
+// ------------------------------------
+// Positioning
+// ------------------------------------
+
+@mixin position($pos, $top:auto, $right:auto, $bottom:auto, $left:auto) {
+    position: $pos;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// ------------------------------------
+// Boxes
+// ------------------------------------
+
+@mixin box($bg-color, $txt-color, $width:200px, $height:200px, $box-shadow: 0px 5px 20px 1px, $border-radius: 4px, ) {
+    .box {
+        background: $bg-color;
+        color: $txt-color;
+    }
+}
+
+@mixin floating-box {
+    &.floating {
+        box-shadow:none;
+        position:relative;
+        &:after {
+            content:'';
+            display:block;
+            width:50%;
+            height:50%;
+            background:#FFFFFF;
+            position:absolute;
+            bottom:0px;
+            left:50px;
+            transform:translateX(-50%);
+            z-index:-1;
+            box-shadow:0px 5px 80px 0;
+        }
+    }
+}

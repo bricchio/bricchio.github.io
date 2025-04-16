@@ -1,0 +1,18 @@
+@use '../abstracts/index';
+
+// ------------------------------------
+// Font colors 
+// ------------------------------------
+
+.text-primary {color: index.$color-primary;}
+.text-secondary {color: index.$color-secondary;}
+.text-black {color: index.$color-black;}
+.text-white {color: index.$color-white;}
+.text-error {color: index.$color-error;}
+
+// ------------------------------------
+// Background colors 
+// ------------------------------------
+
+.bg-primary {background-color:index.$color-primary;}
+.bg-secondary {background-color:index.$color-secondary;}

@@ -1,0 +1,679 @@
+@function grid-item($n) {
+    @for $i from 1 through $n {
+        
+    }
+}
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';
+@use '../abstracts/variables';
+@use 'sass:map';
+
+// ------------------------------------
+// Flex Container
+// ------------------------------------
+
+// m = main axis (justify-content)
+// c = cross axis (align-items)
+// w = wrap or space along (align-content)
+// self = align-self
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    min-width:0;
+    min-height:0;
+}
+
+@mixin flex-center {
+    @include flexbox;
+    justify-content:center;
+    align-items:center;
+}
+
+// ------------------------------------
+// Flex Row & Justify Content
+// ------------------------------------
+
+@mixin flex-row {
+    @include flexbox;
+    -ms-flex-direction: row;
+    flex-direction:row;
+}
+@mixin flex-m-start {justify-content: flex-start;}
+@mixin flex-m-end {justify-content: end;}
+@mixin flex-m-center {justify-content:center;}
+@mixin flex-m-space-between {justify-content:space-between;}
+@mixin flex-m-space-around {justify-content:space-around;}
+@mixin flex-m-space-evenly {justify-content:space-evenly;}
+
+// ------------------------------------
+// Flex Column & Align Items
+// ------------------------------------
+
+@mixin flex-col {
+    @include flexbox;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+@mixin flex-c-start {align-items: start;}
+@mixin flex-c-end {align-items: end;}
+@mixin flex-c-center {align-items: center;}
+@mixin flex-c-stretch {align-items: stretch;}
+@mixin flex-c-baseline {align-items: baseline;}
+
+// ------------------------------------
+// Flex Column & Align Content
+// ------------------------------------
+
+@mixin flex-w-start {align-content: start;}
+@mixin flex-w-end {align-content: end;}
+@mixin flex-w-center {align-content: center;}
+@mixin flex-w-stretch {align-content: stretch;}
+@mixin flex-w-space-between {align-content: space-between;}
+@mixin flex-w-space-around {align-content: space-around;}
+
+// ------------------------------------
+// Flex Column & Align Self
+// ------------------------------------
+
+@mixin flex-self-start {align-self: flex-start;}
+@mixin flex-self-end {align-self: flex-end;}
+@mixin flex-self-center {align-self: center;}
+@mixin flex-self-baseline {align-self: baseline;}
+@mixin flex-self-stretch {align-self: stretch;}
+
+// ------------------------------------
+// Flex Items
+// ------------------------------------
+
+@mixin flex-initial {flex: 0 1 auto;} // aka "flex-shrink"
+@mixin flex-grow {flex:1 1 auto;}
+@mixin flex-auto {flex: 1 1 auto;}
+@mixin flex-none {flex: 0 0 auto;}
+
+// ------------------------------------
+// Grid
+// ------------------------------------
+
+@mixin grid {
+    display: -moz-grid;
+    display: -ms-grid;
+    display: grid;
+}
+@mixin grid-inline {
+    display: -moz-inline-grid;
+    display: -ms-inline-grid;
+    display: inline-grid;
+}
+
+// ------------------------------------
+// Breakpoints
+// ------------------------------------
+
+@mixin for-size($size) {
+    @if $size == screen-sm {
+        @media all and (min-width: variables.$screen-sm-px) {
+            @content;
+        }
+    } @else if $size == screen-md {
+        @media all and (min-width: variables.$screen-md-px) {
+            @content;
+        }
+    } @else if $size == screen-lg {
+        @media all and (min-width: variables.$screen-lg-px) {
+            @content;
+        }
+    }
+}
+
+// ------------------------------------
+// Positioning
+// ------------------------------------
+
+@mixin position($pos, $top:auto, $right:auto, $bottom:auto, $left:auto) {
+    position: $pos;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+// ------------------------------------
+// Boxes
+// ------------------------------------
+
+@mixin box($bg-color, $txt-color, $width:200px, $height:200px, $box-shadow: 0px 5px 20px 1px, $border-radius: 4px, ) {
+    .box {
+        background: $bg-color;
+        color: $txt-color;
+    }
+}
+
+@mixin floating-box {
+    &.floating {
+        box-shadow:none;
+        position:relative;
+        &:after {
+            content:'';
+            display:block;
+            width:50%;
+            height:50%;
+            background:#FFFFFF;
+            position:absolute;
+            bottom:0px;
+            left:50px;
+            transform:translateX(-50%);
+            z-index:-1;
+            box-shadow:0px 5px 80px 0;
+        }
+    }
+}
+@use "sass:math" as math;
+
+
+// ------------------------------------
+// Typography
+// ------------------------------------
+$font-base: 16;
+$font-base-px: $font-base + 'px';
+$font-body: 18;
+$font-body-px: $font-body + 'px';
+$font-serif: serif;
+$font-sans-serif: sans-serif;
+$font-web: 'Roboto', $font-sans-serif;
+$font-headings: $font-web;
+
+$h1: math.div(36, $font-base) + em;
+$h2: math.div(32, $font-base) + em;
+$h3: math.div(28, $font-base) + em;
+$h4: math.div(24, $font-base) + em;
+$h5: math.div(20, $font-base) + em;
+$h6: math.div(16, $font-base) + em;
+$p: math.div($font-body, $font-base) + em;
+
+// ------------------------------------
+// Colors
+// ------------------------------------
+
+$color-primary: #000;
+$color-secondary: #ccc;
+$color-grey-light: #ccc;
+$color-grey-medium: #ddd;
+$color-grey-dark: #eee;
+$color-black: #000;
+$color-white: #FFF;
+$color-link :$color-primary;
+$color-background: $color-secondary;
+$color-error: red;
+
+// ------------------------------------
+// Transitions
+// ------------------------------------
+
+$transition-slow: 0.5s;
+$transition-normal: 0.3s;
+$trasition-fast: 0.2s;
+
+// ------------------------------------
+// Breakpoints
+// ------------------------------------
+
+$screen-sm: 481;
+$screen-sm-px: $screen-sm + 'px';
+$screen-sm-em: math.div($screen-sm, $font-base) + 'em';
+$screen-md: 769;
+$screen-md-px: $screen-md + 'px';
+$screen-md-em: math.div($screen-md, $font-base) + 'em';
+$screen-lg: 1280;
+$screen-lg-px: $screen-lg + 'px';
+$screen-lg-em: math.div($screen-lg, $font-base) + 'em';
+
+
+// ------------------------------------
+// Form Elements
+// ------------------------------------
+
+$border-radius: 4px;
+
+// ------------------------------------
+// Padding & Margin Spacing
+// ------------------------------------
+
+// Maximum number of 'em' units for padding and margins
+$max: 10;
+
+// Direction of margin and padding
+$direction: (
+    "": "",
+    "-top": "t",
+    "-right": "r",
+    "-bottom": "b",
+    "-left": "l",
+);
+
+// Abbreviated names of padding and margin attributes
+$pmAttr: (
+    "padding": ".p",
+    "margin": ".m",
+);
+@use '../abstracts/index';
+
+// ------------------------------------
+// Font colors 
+// ------------------------------------
+
+.text-primary {color: index.$color-primary;}
+.text-secondary {color: index.$color-secondary;}
+.text-black {color: index.$color-black;}
+.text-white {color: index.$color-white;}
+.text-error {color: index.$color-error;}
+
+// ------------------------------------
+// Background colors 
+// ------------------------------------
+
+.bg-primary {background-color:index.$color-primary;}
+.bg-secondary {background-color:index.$color-secondary;}
+// ------------------------------------
+// Fonts
+// ------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+// @use "../abstracts/functions";
+// @use "../abstracts/mixins";
+// @use "../abstracts/variables";
+
+@use '../abstracts/index';
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family:index.$font-web;
+}
+
+h1,
+.h1 {
+    font-size: index.$h1;
+}
+
+h2,
+.h2 {
+    font-size:index.$h2;
+}
+
+h3,
+.h3 {
+    font-size:index.$h3;
+}
+
+h4,
+.h4 {
+    font-size:index.$h4;
+}
+
+h5,
+.h5 {
+    font-size:index.$h5;
+}
+
+h6,
+.h6 {
+    font-size:index.$h6;
+}
+
+p {
+    font-family:index.$font-web;
+    font-size:index.$p;
+}
+@use '../abstracts/index';
+
+.container {
+    max-width:index.$screen-lg-px;
+    padding: 0 20px;
+    margin:0 auto;
+}
+
+.clearfix::after {
+    clear:both;
+    content:"";
+    display:table;
+}
+
+.sr-only {
+    border:0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.text-left {text-align:left;}
+.text-center {text-align:center;}
+.text-right {text-align:right;}
+@use '../abstracts/index';
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* Prevent font size inflation */
+html {
+    text-size-adjust: none;
+}  
+
+// Core body defaults
+body {
+    min-height:100vh;
+    line-height:1.5;
+    font-family:index.$font-web;
+}
+
+input,
+button,
+textarea,
+select {
+    font-family:inherit;
+    font-size:inherit;
+}
+
+ul,
+ul[role='list'],
+ol,
+ol[role='list'] {
+    list-style:none;
+}
+
+a {
+    color:index.$color-primary;
+    text-decoration:none
+}
+:root {
+    
+}
+@use '../abstracts/index';
+
+
+@use '../abstracts/index';
+
+button,
+.btn {
+    @include index.flex-center;
+    background-color: index.$color-primary;
+    background-image: none;
+    border:1px solid index.$color-black;
+    border-radius: index.$border-radius;
+    color: index.$color-white;
+    font-size: index.$font-body-px;
+    font-family: index.$font-web;
+    @include index.for-size(screen-md) {
+        font-size:2rem;
+    }
+}
+@use '../abstracts/index';
+
+.flex {@include index.flexbox;}
+.flex-center {@include index.flex-center;}
+.flex-row {@include index.flex-row;}
+.flex-m-start {@include index.flex-m-start;}
+.flex-m-end {@include index.flex-m-end;}
+.flex-m-center {@include index.flex-m-center;}
+.flex-m-space-between {@include index.flex-m-space-between;}
+.flex-m-space-around {@include index.flex-m-space-around;}
+.flex-m-evenly {@include index.flex-m-space-evenly;}
+.flex-col {@include index.flex-col;}
+.flex-c-start {@include index.flex-c-start;}
+.flex-c-end {@include index.flex-c-end;}
+.flex-c-center {@include index.flex-c-center;}
+.flex-c-stretch {@include index.flex-c-stretch;}
+.flex-c-baseline {@include index.flex-c-baseline;}
+.flex-w-start {@include index.flex-w-start;}
+.flex-w-end {@include index.flex-w-end;}
+.flex-w-center {@include index.flex-w-center;}
+.flex-w-stretch {@include index.flex-w-stretch;}
+.flex-w-space-between {@include index.flex-w-space-between;}
+.flex-w-space-around {@include index.flex-w-space-around;}
+.flex-initial {@include index.flex-initial;}
+.flex-grow {@include index.flex-grow;}
+.flex-auto {@include index.flex-auto;}
+.flex-none {@include index.flex-none;}
+
+
+@use '../abstracts/index';
+
+$n: 4;
+
+.grid {
+    @include index.grid;
+}
+.grid-inline {
+    @include index.grid-inline;
+}
+
+
+// grid-template: <grid-template-rows> / <grid-template-columns>
+
+.grid,
+.grid-inline {
+    gap:1em;
+    grid-template: repeat(12, 1fr) / 1fr;
+    grid-template-rows:2;
+    grid-template-areas:
+        "grid-item-1"
+        "grid-item-2"
+        "grid-item-3"
+        "grid-item-4"
+        "grid-item-5"
+        "grid-item-6"
+        "grid-item-7"
+        "grid-item-8"
+        "grid-item-9"
+        "grid-item-10"
+        "grid-item-11"
+        "grid-item-12";
+    @include index.for-size(screen-sm) {
+        grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+        grid-template-areas:
+            "grid-item-1 grid-item-2"
+            "grid-item-3 grid-item-4"
+            "grid-item-5 grid-item-6"
+            "grid-item-7 grid-item-8"
+            "grid-item-9 grid-item-10"
+            "grid-item-11 grid-item-12";
+    }
+    @include index.for-size(screen-md) {
+        grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+        grid-template-areas:
+            "grid-item-1 grid-item-2 grid-item-3"
+            "grid-item-4 grid-item-5 grid-item-6"
+            "grid-item-7 grid-item-8 grid-item-9"
+            "grid-item-10 grid-item-11 grid-item-12";
+    }
+    @include index.for-size(screen-lg) {
+        grid-template: repeat(6, 1fr) / repeat(3, 1fr);
+        grid-template-areas:
+            "grid-item-1 grid-item-2 grid-item-3"
+            "grid-item-4 grid-item-4 grid-item-5"
+            "grid-item-4 grid-item-4 grid-item-6"
+            "grid-item-7 grid-item-8 grid-item-11"
+            "grid-item-9 grid-item-10 grid-item-11"
+            "grid-item-9 grid-item-12 grid-item-12";
+    }
+}
+
+.grid-item {
+    @include index.flex-col;
+    @include index.flex-center;
+    text-align:center;
+    padding:20px;
+    @for $i from 1 through $n {
+        &.grid-item-#{$i} {
+            grid-area: grid-item-#{$i};
+        }
+    }
+}
+
+@use '../abstracts/index';
+
+#header {
+    @include index.position(fixed, 0, 0, auto, auto);
+    background:#000;
+    padding:20px;
+    a {
+        color:index.$color-white;
+        display:block;
+        padding:10px;
+        margin:0 15px;
+    }
+}
+@use '../abstracts/index';
+
+.section {
+    margin:50px 0;
+}
+
+#banner {
+    @include index.position(fixed,0,0,unset,0);
+}
+
+#about-me {
+
+}
+
+#work-history {
+
+}
+
+#portfolio {
+
+}
+
+#testimonials {
+
+}
+
+#contact {
+    
+}
+@use '../abstracts/index';
+@use 'sass:map';
+
+// ------------------------------------
+// Spacing
+// ------------------------------------
+
+// Map of breakpoint names and values
+
+$breaks: (
+    "xs": "(max-width:480px)",
+    "sm": "(min-width:481px)",
+    "md": "(min-width:769px)",
+    "lg": "(min-width:1280px)",
+);
+
+// Column width at different breakpoints
+
+.col{
+    @include index.flex-col;
+    margin-left:0;
+    margin-right:auto;
+    @each $name, $num in $breaks {
+        @media all and #{$num} {            
+            @for $i from 1 through 12 {
+                &-#{$i}-#{$name} {
+                    width:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin-left percentages for flexbox at different breakpoints
+
+.ml {
+    @each $name, $num in $breaks {
+        @media all and #{$num} {
+            @for $i from 0 through 12 {
+                &-#{$i}-#{$name} {
+                    margin-left:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin-right percentages for flexbox at different breakpoints
+
+.mr {
+    @each $name, $num in $breaks {
+        @media all and #{$num} {
+            @for $i from 0 through 12 {
+                &-#{$i}-#{$name} {
+                    margin-right:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin and padding 'em' values
+
+@each $spacingName, $abbr in index.$pmAttr {
+    #{$abbr} {
+        @each $name, $value in index.$direction {
+            &#{$value} {
+                @for $i from 0 through index.$max {
+                    &#{$i} {
+                        #{$spacingName}#{$name}: $i+em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// Width percentages
+
+.w-25 {width:25%;}
+.w-50 {width:50%;}
+.w-75 {width:75%;}
+.w-100 {width:100%;}
+
+
+// $widths: (
+//     "25": "25%",
+//     "50": "50%",
+//     "75": "75%",
+//     "100": "100%",
+// );
+
+// .w {
+//     @each $num, $value in $widths {
+//         &-#{$num} {
+//             width:#{$value};
+//         }
+//     }
+// }
+
+@use '../abstracts/index';
+
+
+

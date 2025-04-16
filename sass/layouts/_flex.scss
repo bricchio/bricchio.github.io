@@ -1,0 +1,27 @@
+@use '../abstracts/index';
+
+.flex {@include index.flexbox;}
+.flex-center {@include index.flex-center;}
+.flex-row {@include index.flex-row;}
+.flex-m-start {@include index.flex-m-start;}
+.flex-m-end {@include index.flex-m-end;}
+.flex-m-center {@include index.flex-m-center;}
+.flex-m-space-between {@include index.flex-m-space-between;}
+.flex-m-space-around {@include index.flex-m-space-around;}
+.flex-m-evenly {@include index.flex-m-space-evenly;}
+.flex-col {@include index.flex-col;}
+.flex-c-start {@include index.flex-c-start;}
+.flex-c-end {@include index.flex-c-end;}
+.flex-c-center {@include index.flex-c-center;}
+.flex-c-stretch {@include index.flex-c-stretch;}
+.flex-c-baseline {@include index.flex-c-baseline;}
+.flex-w-start {@include index.flex-w-start;}
+.flex-w-end {@include index.flex-w-end;}
+.flex-w-center {@include index.flex-w-center;}
+.flex-w-stretch {@include index.flex-w-stretch;}
+.flex-w-space-between {@include index.flex-w-space-between;}
+.flex-w-space-around {@include index.flex-w-space-around;}
+.flex-initial {@include index.flex-initial;}
+.flex-grow {@include index.flex-grow;}
+.flex-auto {@include index.flex-auto;}
+.flex-none {@include index.flex-none;}

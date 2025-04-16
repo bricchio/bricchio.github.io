@@ -1,0 +1,102 @@
+@use '../abstracts/index';
+@use 'sass:map';
+
+// ------------------------------------
+// Spacing
+// ------------------------------------
+
+// Map of breakpoint names and values
+
+$breaks: (
+    "xs": "(max-width:480px)",
+    "sm": "(min-width:481px)",
+    "md": "(min-width:769px)",
+    "lg": "(min-width:1280px)",
+);
+
+// Column width at different breakpoints
+
+.col{
+    @include index.flex-col;
+    margin-left:0;
+    margin-right:auto;
+    @each $name, $num in $breaks {
+        @media all and #{$num} {            
+            @for $i from 1 through 12 {
+                &-#{$i}-#{$name} {
+                    width:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin-left percentages for flexbox at different breakpoints
+
+.ml {
+    @each $name, $num in $breaks {
+        @media all and #{$num} {
+            @for $i from 0 through 12 {
+                &-#{$i}-#{$name} {
+                    margin-left:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin-right percentages for flexbox at different breakpoints
+
+.mr {
+    @each $name, $num in $breaks {
+        @media all and #{$num} {
+            @for $i from 0 through 12 {
+                &-#{$i}-#{$name} {
+                    margin-right:calc($i / 12) * 100%;
+                }
+            }
+        }
+    }
+}
+
+// Margin and padding 'em' values
+
+@each $spacingName, $abbr in index.$pmAttr {
+    #{$abbr} {
+        @each $name, $value in index.$direction {
+            &#{$value} {
+                @for $i from 0 through index.$max {
+                    &#{$i} {
+                        #{$spacingName}#{$name}: $i+em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// Width percentages
+
+.w-25 {width:25%;}
+.w-50 {width:50%;}
+.w-75 {width:75%;}
+.w-100 {width:100%;}
+
+
+// $widths: (
+//     "25": "25%",
+//     "50": "50%",
+//     "75": "75%",
+//     "100": "100%",
+// );
+
+// .w {
+//     @each $num, $value in $widths {
+//         &-#{$num} {
+//             width:#{$value};
+//         }
+//     }
+// }

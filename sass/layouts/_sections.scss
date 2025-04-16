@@ -1,0 +1,29 @@
+@use '../abstracts/index';
+
+.section {
+    margin:50px 0;
+}
+
+#banner {
+    @include index.position(fixed,0,0,unset,0);
+}
+
+#about-me {
+
+}
+
+#work-history {
+
+}
+
+#portfolio {
+
+}
+
+#testimonials {
+
+}
+
+#contact {
+    
+}
