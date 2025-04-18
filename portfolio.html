@@ -10,6 +10,11 @@
         <link rel="stylesheet" href="/styles.css" type="text/css" />
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script type="text/javascript" href="/script.js"></script>
+        <script>
+            Alpine.directive('uppercase', el => {
+                el.textContent = el.textContent.toUpperCase()
+            })
+        </script>
     </head>
     <body>
         <div id="header">
@@ -40,62 +45,73 @@
                     <div class="col-12-xs col-6-md"></div>
                 </div>
             </section>
-            <section class="section" id="portfolio">
+            <section class="section" id="portfolio" x-data="{
+                companies: [
+                    {
+                        item: 1,
+                        name: 'amba',
+                    },
+                    {
+                        item: 2,
+                        name: 'american-national',
+                    },
+                    {
+                        item: 3,
+                        name: 'ecaa',
+                    },
+                    {
+                        item: 4,
+                        name: 'fashionphile',
+                    },
+                    {
+                        item: 5,
+                        name: 'ipm',
+                    },
+                    {
+                        item: 6,
+                        name: 'medspeed',
+                    },
+                    {
+                        item: 7,
+                        name: 'medvet',
+                    },
+                    {
+                        item: 8,
+                        name: 'mitsubishi-na',
+                    },
+                    {
+                        item: 9,
+                        name: 'spinnaker-support',
+                    },
+                    {
+                        item: 10,
+                        name: 'tendergreens',
+                    },
+                    {
+                        item: 11,
+                        name: 'torex-gold',
+                    },
+                    {
+                        item: 12,
+                        name: 'vetpartners',
+                    },
+                    {
+                        item: 13,
+                        name: 'vmlyr',
+                    },
+                ],
+            }">
                 <div class="container">
                     <div class="grid">
-                        <div class="grid-item grid-item-1">
-                            <img src="/image-convert/webp/amba.webp" alt="AMBA" />
-                            <p class="text-white">AMBA</p>
-                        </div>
-                        <div class="grid-item grid-item-2">
-                            <img src="./image-convert/webp/" alt="American National" />
-                            <p class="text-white">American National</p>
-                        </div>
-                        <div class="grid-item grid-item-2">
-                            <img src="./image-convert/webp/" alt="ECAA Anesthesia Specialists" />
-                            <p class="text-white">ECAA Anesthesia Specialists</p>
-                        </div>
-                        <div class="grid-item grid-item-3">
-                            <img src="./image-convert/webp/" alt="Fashionphile" />
-                            <p class="text-white">Fashionphile</p>
-                        </div>
-                        <div class="grid-item grid-item-4">
-                            <img src="./image-convert/webp/" alt="Integrated Project Management" />
-                            <p class="text-white">Integrated Project Management (IPM)</p>
-                        </div>
-                        <div class="grid-item grid-item-5">
-                            <img src="./image-convert/webp/" alt="MedSpeed" />
-                            <p class="text-white">MedSpeed</p>
-                        </div>
-                        <div class="grid-item grid-item-6">
-                            <img src="./image-convert/webp/" alt="MedVet" />
-                            <p class="text-white">MedVet</p>
-                        </div>
-                        <div class="grid-item grid-item-7">
-                            <img src="./image-convert/webp/" alt="Mitsubishi North America" />
-                            <p class="text-white">Mitsubishi North America</p>
-                        </div>
-                        <div class="grid-item grid-item-8">
-                            <img src="./image-convert/webp/" alt="Spinnaker Support" />
-                            <p class="text-white">Spinnaker Support</p>
-                        </div>
-                        <div class="grid-item grid-item-9">
-                            <img src="./image-convert/webp/" alt="Tender Greens" />
-                            <p class="text-white">Tender Greens</p>
-                        </div>
-                        <div class="grid-item grid-item-10">
-                            <img src="./image-convert/webp/" alt="Torex Gold Resources" />
-                            <p class="text-white">Torex Gold Resources</p>
-                        </div>
-                        <div class="grid-item grid-item-12">
-                            <img src="./image-convert/webp/" alt="VetPartners" />
-                            <p class="text-white">VetPartners</p>
-                        </div>
-                        <div class="grid-item grid-item-13">
-                            <img src="./image-convert/webp/" alt="VMLYR" />
-                            <p class="text-white">VMLYR</p>
-                        </div>
-                        
+                        <template x-for="company of companies">
+                            <div :class="'grid-item grid-item-' + company.item">
+                                <picture>
+                                    <source :srcset="'/image-convert/webp/' + company.name + '.webp'" />
+                                    <img :src="'image-convert/original/' + company.name + '.png'" />
+                                </picture>
+                            </div>
+                            <p class="text-white" x-uppercase x-text="company.name"></p>
+                        </template>
                     </div>
                 </div>
             </section>
