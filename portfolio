@@ -39,11 +39,35 @@
                     <p>Welcome to my page! "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
             </section>
-            <section class="section" id="work-history">
-                <div class="container">
-                    <div class="col-12-xs col-6-md"></div>
-                    <div class="col-12-xs col-6-md"></div>
-                </div>
+            <section class="section flex" id="work-history" x-data="{
+                jobs: [
+                    {
+                        item: 1,
+                        title: '',
+                        company: '',
+                        dates: '',
+                        desc: '',
+                    },
+                    {
+                        item: 2,
+                        title: '',
+                        company: '',
+                        dates: '',
+                        desc: '',
+                    },
+                    {
+                        item: 3,
+                        title: '',
+                        company: '',
+                        dates: '',
+                        desc: '',
+                    },
+                ],
+            }">
+                <!-- <div class="container flex"> -->
+                    <div class="col-12-xs col-3-md bg-grey-light">&nbsp;</div>
+                    <div class="col-12-xs col-9-md bg-grey-medium">&nbsp;</div>
+                <!-- </div> -->
             </section>
             <section class="section" id="portfolio" x-data="{
                 companies: [
@@ -104,32 +128,70 @@
                 <div class="container">
                     <div class="grid">
                         <template x-for="company of companies">
-                            <div :class="'grid-item grid-item-' + company.item">
+                            <div :class="'grid-item grid-item-' + company.item + ' box floating'">
                                 <picture>
                                     <source :srcset="'/image-convert/webp/' + company.name + '.webp'" />
                                     <img :src="'image-convert/original/' + company.name + '.png'" />
                                 </picture>
+                                <div class="overlay flex-row flex-center">
+                                    <p class="text-white text-center" x-uppercase x-text="company.name"></p>
+                                </div>
                             </div>
-                            <p class="text-white" x-uppercase x-text="company.name"></p>
                         </template>
                     </div>
                 </div>
             </section>
-            <section class="section" id="testimonials">
-                <div class="container">
-                    <div class="col-12-xs col-6-md"></div>
-                    <div class="col-12-xs col-6-md"></div>
-                </div>
+            <section class="section flex" id="testimonials" x-data="{
+                testimonies: [
+                    {
+                        name: 'Mai',
+                        text: 'Ben was a highly motivated and independent learner. He readily adapted to new processes and quickly mastered scripting languages. His problem-solving skills were exceptional, and he consistently demonstrated persistence and a proactive approach to resolving challenges.',
+                    },
+                    {
+                        name: 'Doyle',
+                        text: 'Beyond his technical expertise, Ben is a champion of best practices. He consistently identifies opportunities to improve workflows and ensure high-quality outcomes. His proactive attitude toward continuous improvement elevates the entire team.',
+                    },
+                    {
+                        name: 'Kevin',
+                        text: 'Driven by a strong desire to learn and grow, I witnessed Ben’s progression from UI Support Specialist to UI Developer. He consistently advocated for best practices and actively identified opportunities to enhance processes.',
+                    },
+                ],
+            }">
+                <!-- <div class="container"> -->
+                    <div class="col-12-xs col-3-md">
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col-12-xs col-9-md bg-primary">
+                        <div class="inner p2">
+                            <template x-for="testimony in testimonies">
+                                <div class="text-white">
+                                    <h3 x-text="testimony.text"></h3>
+                                    <h6 x-text="testimony.name"></h6>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                <!-- </div> -->
             </section>
             <section class="section" id="contact">
-                <div class="container">
-                    <div class="col-12-xs col-6-md"></div>
-                    <div class="col-12-xs col-6-md"></div>
+                <div class="container flex-row flex-wrap">
+                    <div class="col-12-xs col-3-md flex-row flex-center">
+                        Carmel, IN
+                    </div>
+                    <div class="col-12-xs col-3-md flex-row flex-center">
+                        Email
+                    </div>
+                    <div class="col-12-xs col-3-md flex-row flex-center">
+                        GitHub
+                    </div>
+                    <div class="col-12-xs col-3-md flex-row flex-center">
+                        LinkedIn
+                    </div>
                 </div>
             </section>
         </main>
         <div id="footer">
-            <div class="container">
+            <div class="container flex-row flex-wrap flex-c-center">
                 <div class="col-12-xs col-4-md">
                     <div class="flex-row flex-c-center">
                         <a href="https://www.linkedin.com/in/ben-ricchio/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
@@ -143,7 +205,7 @@
                     </div>
                 </div>
                 <div class="col-12-xs col-8-md">
-                    <div class="flex-row flex-c-center text-right">
+                    <div class="flex-row flex-c-center flex-m-end">
                         <p class="m0">Copyright &copy; 
                             <span id="current-year">
                                 <script type="text/javascript">document.getElementById('current-year').textContent = new Date().getFullYear();</script>

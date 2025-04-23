@@ -4,7 +4,7 @@ import webp from 'gulp-webp';
 
 
 export default () => (
-	gulp.src('image-convert/original/amba.png')
+	gulp.src('image-convert/original/*.{jpg,png}', { encoding: false })
 		.pipe(webp())
-		.pipe(gulp.dest('./image-convert/new'))
+		.pipe(gulp.dest('./image-convert/webp'))
 );

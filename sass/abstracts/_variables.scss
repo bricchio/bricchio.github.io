@@ -49,14 +49,14 @@ $trasition-fast: 0.2s;
 // ------------------------------------
 
 $screen-sm: 481;
-$screen-sm-px: $screen-sm + 'px';
-$screen-sm-em: math.div($screen-sm, $font-base) + 'em';
+$screen-sm-px: $screen-sm + px;
+$screen-sm-em: math.div($screen-sm, $font-base) + em;
 $screen-md: 769;
-$screen-md-px: $screen-md + 'px';
-$screen-md-em: math.div($screen-md, $font-base) + 'em';
+$screen-md-px: $screen-md + px;
+$screen-md-em: math.div($screen-md, $font-base) + em;
 $screen-lg: 1280;
-$screen-lg-px: $screen-lg + 'px';
-$screen-lg-em: math.div($screen-lg, $font-base) + 'em';
+$screen-lg-px: $screen-lg + px;
+$screen-lg-em: math.div($screen-lg, $font-base) + em;
 
 
 // ------------------------------------

@@ -1,7 +1,7 @@
 @use '../abstracts/index';
 
 #header {
-    @include index.position(fixed, 0, 0, auto, auto);
+    @include index.position(fixed, 0, 0, auto, auto,500);
     background:#000;
     padding:20px;
     a {

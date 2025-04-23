@@ -1,2 +1,9 @@
 @use '../abstracts/index';
 
+.box {
+    @include index.box;
+}
+
+.floating-box {
+    @include index.floating-box;
+}

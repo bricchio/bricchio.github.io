@@ -134,12 +134,13 @@
 // Positioning
 // ------------------------------------
 
-@mixin position($pos, $top:auto, $right:auto, $bottom:auto, $left:auto) {
+@mixin position($pos, $top:auto, $right:auto, $bottom:auto, $left:auto, $z-index:1) {
     position: $pos;
     top: $top;
     right: $right;
     bottom: $bottom;
     left: $left;
+    z-index: $z-index
 }
 
 // ------------------------------------
