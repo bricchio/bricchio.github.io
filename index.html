@@ -9,23 +9,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/styles.css" type="text/css" />
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <script type="text/javascript" href="/script.js"></script>
-        <script>
-            Alpine.directive('uppercase', el => {
-                el.textContent = el.textContent.toUpperCase()
-            })
-        </script>
+        <script defer src="/script.js" type="text/javascript"></script>
+
     </head>
-    <body>
+    <body :class="isOpen ? 'active' : '' " x-data="{
+        isOpen: false,
+    }">
         <div id="header">
-            <div class="container">
-                <div class="flex-row flex-m-end flex-c-center">
-                    <a href="#" target="">Home</a>
+            <div class="container flex-row flex-m-end flex-c-center">
+                <div :class="isOpen ? 'active header-links' : 'header-links' " >
+                    <a href="/index.html">Home</a>
                     <a href="#about-me" target="">About Me</a>
-                    <a href="#work-history">Work History</a>
                     <a href="#portfolio">Projects</a>
+                    <a href="#work-history">Work History</a>
                     <a href="#testimonials">Testimonials</a>
-                    <a href="#contact">Contacts</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div :class="isOpen ? 'active hamburger' : 'hamburger' " @click="isOpen = !isOpen">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
                 </div>
             </div>
         </div>
@@ -33,99 +36,109 @@
             <section class="section" id="banner">
                 <div class="img-placeholder"></div>
             </section>
-            <section class="section" id="about-me">
+            <section class="section flex-row" id="about-me">
                 <div class="container">
-                    <h2>About Me</h2>
-                    <p>Welcome to my page! "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="col-12-xs col-10-lg">
+                        <h2>About Me</h2>
+                        <p>Welcome to my page! I'm Ben, I have been in web development for 10 years, building career websites from scratch for hundreds of customers across a wide range of industries. While developers often devote their time to programming, I was fortunate to be responsible for both creative-control of my projects, and customer interactions.</p>
+                        <p>Before switching careers into programming, I spent 5 years in recruitment and learned how to communicate with leaders in various departments at Salesforce.  Today, I am equally comfortable as the main-point of contact for my customers' projects, whether I am communicating with Sales, Customer Success, Engineering, or C-Suite.</p>
+                        <p>Check out my projects, my background, and what people have to say about me. If you would like to have a discussion, feel free to reach out via the channels below.</p>
+                        <!-- <p>I'm grateful to have experience that spans from customer-facing interactions to behind-the-scenes work. This experience came in handy when I switched to full-time programming.  For 7 years, I have been building custom career-websites for my clients, and acted as their sole point-of-contact throughout the creation process.</p>
+                        <p>With each customer, I run kickoff calls to gather requirements </p> -->
+                    </div>
+                    <div class="col-12-xs col-2-lg">
+    
+                    </div>
                 </div>
-            </section>
-            <section class="section flex" id="work-history" x-data="{
-                jobs: [
-                    {
-                        item: 1,
-                        title: '',
-                        company: '',
-                        dates: '',
-                        desc: '',
-                    },
-                    {
-                        item: 2,
-                        title: '',
-                        company: '',
-                        dates: '',
-                        desc: '',
-                    },
-                    {
-                        item: 3,
-                        title: '',
-                        company: '',
-                        dates: '',
-                        desc: '',
-                    },
-                ],
-            }">
-                <!-- <div class="container flex"> -->
-                    <div class="col-12-xs col-3-md bg-grey-light">&nbsp;</div>
-                    <div class="col-12-xs col-9-md bg-grey-medium">&nbsp;</div>
-                <!-- </div> -->
             </section>
             <section class="section" id="portfolio" x-data="{
                 companies: [
-                    {
+                {
+                        
                         item: 1,
                         name: 'amba',
+                        display: 'AMBA',
+                        url: 'https://jobs.jobvite.com/amba/jobs',
                     },
                     {
                         item: 2,
                         name: 'american-national',
+                        display: 'American National',
+                        url: 'https://web.archive.org/web/20240807193032/https://jobs.jobvite.com/americannational/jobs',
+
                     },
                     {
                         item: 3,
                         name: 'ecaa',
+                        display: 'East Carolina Anesthesia Associates (ECAA)',
+                        url: 'https://careers.ecaa.com/',
                     },
                     {
                         item: 4,
                         name: 'fashionphile',
+                        display: 'Fashionphile',
+                        url: 'https://web.archive.org/web/20230215073851/https://jobs.jobvite.com/fashionphilecareers'
                     },
                     {
                         item: 5,
                         name: 'ipm',
+                        display: 'Integrated Project Management (IPM)',
+                        url: 'https://jobs.jobvite.com/ipmcinc/jobs',
                     },
                     {
                         item: 6,
                         name: 'medspeed',
+                        display: 'Medspeed',
+                        url: 'https://jobs.jobvite.com/medspeed',
                     },
                     {
                         item: 7,
                         name: 'medvet',
+                        display: 'MedVet',
+                        url: 'https://web.archive.org/web/20230205101519/https://jobs.jobvite.com/medvet/jobs',
                     },
                     {
                         item: 8,
                         name: 'mitsubishi-na',
+                        display: 'Mitsubishi North America',
+                        url: 'https://web.archive.org/web/20231211000754/https://jobs.jobvite.com/mitsubishimotorsna/jobs/alljobs',
                     },
                     {
                         item: 9,
                         name: 'spinnaker-support',
+                        display: 'Spinnaker Support',
+                        url: 'https://web.archive.org/web/20230514221924/https://jobs.jobvite.com/spinnakersupport/jobs',
                     },
                     {
                         item: 10,
                         name: 'tendergreens',
+                        display: 'Tender Greens',
+                        url: 'https://jobs.jobvite.com/tendergreens/jobs',
                     },
                     {
                         item: 11,
                         name: 'torex-gold',
+                        display: 'Torex Gold',
+                        url: 'https://jobs.jobvite.com/torexgold/jobs',
                     },
                     {
                         item: 12,
                         name: 'vetpartners',
+                        display: 'VetPartners',
+                        url: 'https://web.archive.org/web/20230601045120/https://jobs.jobvite.com/vetpartners/jobs',
                     },
                     {
                         item: 13,
                         name: 'vmlyr',
+                        display: 'VMLYR',
+                        url: 'https://web.archive.org/web/20230329210932/https://jobs.jobvite.com/vmlyr/jobs',
                     },
                 ],
             }">
                 <div class="container">
+                    <h2>Projects</h2>
+                    <p>The tiles below are a sampling of the branded sites I built at Jobvite.  Click on any tile to view the complete site.</p>
+                    <p><span class="text-small">(<strong>Please note: </strong>If a customer is no longer using Jobvite, the tile will point to their archived-pages on <a href="https://web.archive.org">web.archive.org</a>.</span>)</p>
                     <div class="grid">
                         <template x-for="company of companies">
                             <div :class="'grid-item grid-item-' + company.item + ' box floating'">
@@ -134,85 +147,201 @@
                                     <img :src="'image-convert/original/' + company.name + '.png'" />
                                 </picture>
                                 <div class="overlay flex-row flex-center">
-                                    <p class="text-white text-center" x-uppercase x-text="company.name"></p>
+                                    <a :href="company.url" target="_blank" rel="noopener noreferrer" class="btn h4 p1 text-white text-center">
+                                        <span class="button-text" x-text="company.display"></span>
+                                        <span class="highlight-hover"></span>
+                                    </a>
                                 </div>
                             </div>
                         </template>
                     </div>
                 </div>
             </section>
-            <section class="section flex" id="testimonials" x-data="{
+            <section class="section" id="work-history" x-data="{
+                jobs: [
+                    {
+                        item:1,
+                        employer: 'Salesforce',
+                        title: `Sourcing Strategist`,
+                        company: `Salesforce`,
+                        dates: `October, 2013 - March, 2015`,
+                        desc: `<p>Salesforce was my first opportunity to work in programming.  My primary responsibility was to identify and procure talent for hard-to-fill jobs.  My secondary responsibilities included creating HTML email templates and web landing-pages for recruitment events.</p>`,
+                        width: 17,
+                    },
+                    {
+                        item:2,
+                        employer: 'Jobvite',
+                        title: `UI Support Specialist`,
+                        company: `Jobvite`,
+                        dates: `March, 2015 - March, 2018`,
+                        desc: `<p>Served as the main point-of-contact and subject-matter expert for all CWS customer-tickets. This role was a stepping-stone into web-development.</p>
+                            <ul><li>Received 2016 Customers Award in my first year</li></ul>`,
+                        width: 36,
+                    },
+                    {
+                        item:3,
+                        employer: 'Jobvite',
+                        title: `UI Developer`,
+                        company: `Jobvite`,
+                        dates: `March, 2018 - December, 2024`,
+                        desc: `<p>Transitioned into dedicated design and development of customers' sites, while continuing my role as a subject-matter expert for the career website (CWS) team, and the primary point-of-contact for my customers to build their sites, from concept to sign-off.</p> 
+                            <ul>
+                                <li>Ran kickoff calls with customers to gather requirements, set expectations, and manage timelines.</li>
+                                <li>Prototyped interactive wireframes for customers' sites in XD, Figma or InVision. Built websites using HTML, CSS and JavaScript.</li>
+                                <li>Main point-of-contact for ongoing maintenance, updates, and problem-resolution.</li>
+                            </ul>`,
+                        width: 81,
+                    },
+                ],
+                transform:'',
+                getTransform: function() { this.transform = -100 * this.selected; return this.transform },
+                selected:0,
+                next: function() { this.selected < this.jobs.length - 1 ? this.selected++ : this.selected = 0 },
+                prev: function() { this.selected > 0 ? --this.selected : this.selected = this.jobs.length - 1 },
+            }">
+                <div class="container flex-row flex-wrap">
+                    <div class="content col-12-xs col-10-md bg-grey-light pb0">
+                        <div class="inner">
+                            <h2>Work History</h2>
+                            <div class="toggle flex-row flex-m-start flex-nowrap w-100">
+                                <template x-for="(job, index) in jobs">
+                                    <button :class="selected == index ? 'tab active' : 'tab' " @click="selected = index" x-text="job.title">
+                                        <!-- <span class="h6" x-text="job.title"></span> -->
+                                    </button>
+                                </template>
+                            </div>
+                            <div class="carousel grid">
+                                <template x-for="(job, index) in jobs">
+                                    <div :class="selected == index ? 'active grid-item grid-item-' + job.item : 'grid-item grid-item-' + job.item" :style=" 'transform: translateX(' + getTransform() + '%);' ">
+                                        <p class="m0">
+                                            <strong x-text="job.employer"></strong><br>
+                                            <strong x-text="job.dates"></strong>
+                                        </p>
+                                        <div x-html="job.desc"></div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12-xs col-2-md hide-xs hide-sm">
+                    </div>
+                </div>
+            </section>
+            <section class="section" id="testimonials" x-data="{
                 testimonies: [
                     {
-                        name: 'Mai',
+                        item: 1,
+                        name: '- Mai',
                         text: 'Ben was a highly motivated and independent learner. He readily adapted to new processes and quickly mastered scripting languages. His problem-solving skills were exceptional, and he consistently demonstrated persistence and a proactive approach to resolving challenges.',
                     },
                     {
-                        name: 'Doyle',
+                        item: 2,
+                        name: '- Doyle',
                         text: 'Beyond his technical expertise, Ben is a champion of best practices. He consistently identifies opportunities to improve workflows and ensure high-quality outcomes. His proactive attitude toward continuous improvement elevates the entire team.',
                     },
                     {
-                        name: 'Kevin',
+                        item: 3,
+                        name: '- Kevin',
                         text: 'Driven by a strong desire to learn and grow, I witnessed Ben’s progression from UI Support Specialist to UI Developer. He consistently advocated for best practices and actively identified opportunities to enhance processes.',
                     },
                 ],
+                transform:'',
+                getTransform: function() { this.transform = -100 * this.selected; return this.transform },
+                selected:0,
+                next: function() { this.selected < this.testimonies.length - 1 ? this.selected++ : this.selected = 0 },
+                prev: function() { this.selected > 0 ? --this.selected : this.selected = this.testimonies.length - 1 },
             }">
-                <!-- <div class="container"> -->
-                    <div class="col-12-xs col-3-md">
+                <div class="container flex-row flex-wrap">
+                    <div class="col-12-xs col-2-md hide-xs hide-sm">
                         <p>&nbsp;</p>
                     </div>
-                    <div class="col-12-xs col-9-md bg-primary">
-                        <div class="inner p2">
-                            <template x-for="testimony in testimonies">
-                                <div class="text-white">
-                                    <h3 x-text="testimony.text"></h3>
-                                    <h6 x-text="testimony.name"></h6>
-                                </div>
-                            </template>
+                    <div class="content col-12-xs col-10-md bg-primary">
+                        <div class="inner">
+                            <div class="carousel p2 pb0 grid">
+                                <template x-for="(testimony, index) in testimonies" :key="index">
+                                    <div :class="selected == index ? 'active slide text-white grid-item-' + testimony.item : 'slide text-white grid-item-' + testimony.item " :style=" 'transform: translateX(' + getTransform() + '%);' ">
+                                        <P class="h5" x-text="testimony.text"></h3>
+                                        <p class="h3" x-text="testimony.name"></h6>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="radio flex-row flex-center">
+                                <template x-for="(testimony, index) in testimonies">
+                                    <button :class="selected == index ? 'active btn radio' : 'btn radio' " @click="selected = index">
+                                        <div class="dot"></div>
+                                    </button>
+                                </template>
+                            </div>
+                            <div class="toggle hide-md hide-lg">
+                                <button class="btn flex-row flex-center prev" @click="prev()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
+                                    <span class="sr-only">Previous</span>
+                                </button>
+                                <button class="btn flex-row flex-center next" @click="next()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg>
+                                    <span class="sr-only">Next</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                <!-- </div> -->
+                </div>
             </section>
             <section class="section" id="contact">
                 <div class="container flex-row flex-wrap">
-                    <div class="col-12-xs col-3-md flex-row flex-center">
-                        Carmel, IN
+                    <div class="col-12-xs col-3-md flex-col flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M302.8 312C334.9 271.9 408 174.6 408 120C408 53.7 354.3 0 288 0S168 53.7 168 120c0 54.6 73.1 151.9 105.2 192c7.7 9.6 22 9.6 29.6 0zM416 503l144.9-58c9.1-3.6 15.1-12.5 15.1-22.3L576 152c0-17-17.1-28.6-32.9-22.3l-116 46.4c-.5 1.2-1 2.5-1.5 3.7c-2.9 6.8-6.1 13.7-9.6 20.6L416 503zM15.1 187.3C6 191 0 199.8 0 209.6L0 480.4c0 17 17.1 28.6 32.9 22.3L160 451.8l0-251.4c-3.5-6.9-6.7-13.8-9.6-20.6c-5.6-13.2-10.4-27.4-12.8-41.5l-122.6 49zM384 255c-20.5 31.3-42.3 59.6-56.2 77c-20.5 25.6-59.1 25.6-79.6 0c-13.9-17.4-35.7-45.7-56.2-77l0 194.4 192 54.9L384 255z"/></svg>
+                        <span class="mt1">Carmel, IN</span>
+                        <span class="sr-only">Carmel, IN</span>
                     </div>
-                    <div class="col-12-xs col-3-md flex-row flex-center">
-                        Email
+                    <div class="col-12-xs col-3-md flex-col flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                        <span class="mt1">bricchio@gmail.com</span>
+                        <span class="sr-only">Email</span>
+                        
                     </div>
-                    <div class="col-12-xs col-3-md flex-row flex-center">
-                        GitHub
+                    <div class="col-12-xs col-3-md flex-col flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @font<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+                        <span class="mt1">GitHub</span>
+                        <span class="sr-only">GitHub</span>
+                        
                     </div>
-                    <div class="col-12-xs col-3-md flex-row flex-center">
-                        LinkedIn
+                    <div class="col-12-xs col-3-md flex-col flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+                        <span class="mt1">LinkedIn</span>
+                        <span class="sr-only">LinkedIn</span>
+                        
                     </div>
                 </div>
             </section>
         </main>
         <div id="footer">
-            <div class="container flex-row flex-wrap flex-c-center">
-                <div class="col-12-xs col-4-md">
-                    <div class="flex-row flex-c-center">
-                        <a href="https://www.linkedin.com/in/ben-ricchio/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                        <a href="https://github.com/bricchio" target="_blank" rel="noopener noreferrer" title="Github">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-                            <span class="sr-only">Github</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-12-xs col-8-md">
-                    <div class="flex-row flex-c-center flex-m-end">
+            <div class="container flex-row flex-wrap flex-c-center flex-m-end">
+                <!-- <div class="col-12-xs col-4-md"> -->
+                    <!-- <div class="flex-row flex-c-center"> -->
+                        <!-- <a href="https://www.linkedin.com/in/ben-ricchio/" target="_blank" rel="noopener noreferrer" title="LinkedIn"> -->
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> -->
+                                <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <!-- <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg> -->
+                            <!-- <span class="sr-only">LinkedIn</span> -->
+                        <!-- </a> -->
+                        <!-- <a href="https://github.com/bricchio" target="_blank" rel="noopener noreferrer" title="Github"> -->
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"> -->
+                                <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                <!-- <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> -->
+                            <!-- <span class="sr-only">Github</span> -->
+                        <!-- </a> -->
+                    <!-- </div> -->
+                <!-- </div> -->
+                <!-- <div class="col-12-xs col-8-md"> -->
+                <!-- <div class="col-12-xs"> -->
+                    <!-- <div class="flex-row flex-c-center flex-m-end"> -->
                         <p class="m0">Copyright &copy; 
                             <span id="current-year">
                                 <script type="text/javascript">document.getElementById('current-year').textContent = new Date().getFullYear();</script>
                             </span>
                         </p>
-                    </div>
-                </div>
+                    <!-- </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </body>

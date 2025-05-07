@@ -11,13 +11,18 @@
 /* Prevent font size inflation */
 html {
     text-size-adjust: none;
+    scroll-behavior: smooth;
 }  
 
 // Core body defaults
 body {
-    min-height:100vh;
-    line-height:1.5;
     font-family:index.$font-web;
+    line-height:1.5;
+    margin:0;
+    min-height:100vh;
+    &.active {
+        overflow-y:hidden;
+    }
 }
 
 input,

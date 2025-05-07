@@ -1,9 +1,10 @@
 @use '../abstracts/index';
 
 .container {
+    margin:0 auto;
     max-width:index.$screen-lg-px;
     padding: 0 20px;
-    margin:0 auto;
+    position:relative;
 }
 
 .clearfix::after {
@@ -23,6 +24,48 @@
     width: 1px;
 }
 
+.hide-xs { 
+    @media (max-width:480px) {
+        display:none!important;
+    }
+}
+.hide-sm {
+    @media (min-width:index.$screen-sm-px) and (max-width:768px) {
+        display:none!important;
+    }
+}
+.hide-md {
+    @media (min-width:index.$screen-md-px) and (max-width:1279px) {
+        display:none!important;
+    }
+}
+.hide-lg {
+    @include index.for-size(screen-lg) {
+        display:none!important;
+    }
+}
+.show-xs { 
+    @media (max-width:480px) {
+        display:block!important;
+    }
+}
+.show-sm {
+    @media (min-width:index.$screen-sm-px) and (max-width:768px) {
+        display:block!important;
+    }
+}
+.show-md {
+    @media (min-width:index.$screen-md-px) and (max-width:1279px) {
+        display:block!important;
+    }
+}
+.show-lg {
+    @include index.for-size(screen-lg) {
+        display:block!important;
+    }
+}
+
 .text-left {text-align:left;}
 .text-center {text-align:center;}
 .text-right {text-align:right;}
+.text-small {font-size:0.85rem;}

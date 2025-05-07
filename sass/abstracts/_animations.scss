@@ -1,0 +1,28 @@
+@keyframes header-reveal {
+    0% { top:-84px; }
+    100% { top:0px; }
+}
+
+@keyframes menu-reveal-1 {
+    0% { transform:scale(1) rotate(0deg);top:-8px; }
+    50% { transform:scale(1.5); }
+    100% { transform:scale(1) rotate(225deg);top:2px; }
+}
+
+@keyframes menu-reveal-3 {
+    0% { transform:scale(1) rotate(0deg);top:8px; }
+    50% { transform:scale(1.5); }
+    100% { transform:scale(1) rotate(-45deg);top:-2px; }
+}
+
+@keyframes menu-hide-1 {
+    0% { transform:scale(1) rotate(225deg);top:2px; }
+    50% { transform:scale(1.5); }
+    100% { transform:scale(1) rotate(0deg);top:-8px; }
+}
+
+@keyframes menu-hide-3 {
+    0% { transform:scale(1) rotate(-45deg);top:-2px;}
+    50% { transform:scale(1.5); }
+    100% { transform:scale(1) rotate(0deg);top:8px; }
+}

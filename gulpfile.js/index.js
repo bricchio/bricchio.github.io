@@ -4,7 +4,8 @@ import webp from 'gulp-webp';
 
 
 export default () => (
-	gulp.src('image-convert/original/*.{jpg,png}', { encoding: false })
+	gulp.src('image-convert/revised/*.{jpg,png}', { encoding: false })
 		.pipe(webp())
 		.pipe(gulp.dest('./image-convert/webp'))
 );
+

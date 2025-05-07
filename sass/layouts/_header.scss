@@ -1,13 +1,98 @@
 @use '../abstracts/index';
 
 #header {
-    @include index.position(fixed, 0, 0, auto, auto,500);
-    background:#000;
+    @include index.position(absolute, 0, 0, auto, auto,500);
+    background:index.$color-delft-blue;
+    height:84px;
     padding:20px;
+    width:100%;
+    @media all and (min-width:992px) {
+        width:auto;
+    }
+    .container {
+        height:100%;
+    }
     a {
         color:index.$color-white;
         display:block;
         padding:10px;
         margin:0 15px;
+    }
+    &.fixed {
+        animation: header-reveal 1s forwards;
+        box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, .034), 0 6.7px 5.3px rgba(0, 0, 0, .048), 0 12.5px 10px rgba(0, 0, 0, .06), 0 22.3px 17.9px rgba(0, 0, 0, .072), 0 41.8px 33.4px rgba(0, 0, 0, .086), 0 100px 80px rgba(0, 0, 0, .12);
+        position:fixed;
+        top:-84px;
+    }
+}
+.header-links {
+    transition: opacity, visibility, max-height index.$transition-normal ease-out;
+    opacity:0;
+    visibility:hidden;
+    height:100%;
+    max-height:0px;
+    @media all and (min-width:992px) {
+        @include index.flex-row;
+        opacity:1;
+        visibility:visible;
+    }
+    &.active {
+        @include index.flex-col;
+        @include index.flex-c-center;
+        background:linear-gradient(180deg, rgba(61, 64, 91, 1) 65%, rgba(61, 64, 91, 0.75) 85%, rgba(61, 64, 91, 0.5) 100%);
+        max-height:calc(100% - 84px);
+        left: 0;
+        opacity:1;
+        padding-top: 100px;
+        position: fixed;
+        top: 84px;
+        transition: opacity, visibility, max-height index.$transition-normal ease-in;
+        visibility: visible;
+        width: 100%;
+    }
+
+}
+.hamburger {
+    @include index.flex-col;
+    @include index.flex-m-center;
+    height:30px;
+    width:30px;
+    @media all and (min-width:992px) {
+        display:none;
+    }
+    .line {
+        // transition: all index.$transition-normal ease-in-out;
+        background-color:index.$color-white;
+        display:block;
+        height:2px;
+        position:relative;
+        width:30px;
+        &:nth-of-type(1) {
+            top:-8px;
+            // transform:rotate(0deg);
+            animation:menu-hide-1 0.5s forwards;
+            
+        }
+        &:nth-of-type(3) {
+            top:8px;
+            // transform:rotate(0deg);
+            animation:menu-hide-3 0.5s forwards;
+        }
+    }
+    &.active {
+        .line {
+            &:nth-of-type(1) {
+                animation:menu-reveal-1 0.5s forwards;
+                top:2px;
+            }
+            &:nth-of-type(2) {
+                opacity:0;
+                visibility:hidden;
+            }
+            &:nth-of-type(3) {
+                animation:menu-reveal-3 0.5s forwards;
+                top:-2px;
+            }
+        }
     }
 }

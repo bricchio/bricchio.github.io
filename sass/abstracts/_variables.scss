@@ -5,13 +5,15 @@
 // Typography
 // ------------------------------------
 $font-base: 16;
-$font-base-px: $font-base + 'px';
+$font-base-px: $font-base + px;
 $font-body: 18;
-$font-body-px: $font-body + 'px';
+$font-body-px: $font-body + px;
 $font-serif: serif;
 $font-sans-serif: sans-serif;
-$font-web: 'Roboto', $font-sans-serif;
-$font-headings: $font-web;
+// $font-web: 'Roboto', $font-sans-serif;
+$font-web: 'Courier Prime', $font-sans-serif;
+$font-headings: 'Bebas Neue', $font-web;
+// $font-headings: $font-web;
 
 $h1: math.div(36, $font-base) + em;
 $h2: math.div(32, $font-base) + em;
@@ -30,6 +32,9 @@ $color-secondary: #ccc;
 $color-grey-light: #ccc;
 $color-grey-medium: #ddd;
 $color-grey-dark: #eee;
+$color-tea-green: #CFE0C3;
+$color-delft-blue: #3d405b;
+$color-isabelline: #F6F0ED;
 $color-black: #000;
 $color-white: #FFF;
 $color-link :$color-primary;
@@ -42,7 +47,7 @@ $color-error: red;
 
 $transition-slow: 0.5s;
 $transition-normal: 0.3s;
-$trasition-fast: 0.2s;
+$transition-fast: 0.2s;
 
 // ------------------------------------
 // Breakpoints

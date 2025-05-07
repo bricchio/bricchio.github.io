@@ -1,7 +1,10 @@
 @use '../abstracts/index';
 
 .section {
-    margin:50px 0;
+    margin:0 0 50px;
+    @include index.for-size(screen-md) {
+        margin:0 0 75px;
+    }
 }
 
 #banner {
@@ -13,17 +16,195 @@
 }
 
 #work-history {
-
+    background-color:index.$color-grey-light;
+    @include index.for-size(screen-md) {
+        background-color:transparent;
+    }
+    .content {
+        position:relative;
+        padding:2em 0;
+        @include index.for-size(screen-md) {
+            padding:2em;
+            &:before {
+                background-color:index.$color-grey-light;
+                content:'';
+                height:100%;
+                position:absolute;
+                right:100%;
+                top:0;
+                width:100%;
+            }
+        }
+    }
+    .toggle {
+        @include index.flex-col;
+        @include index.for-size(screen-md) {
+            @include index.flex-row;
+        }
+    }
+    .tab {
+        font-family: index.$font-headings;
+        font-size:index.$h3;
+        margin: 0.25em 0;
+        padding-left:0.5em;
+        padding-right:0.5em;
+        transition: all index.$transition-normal ease-out;
+        &.active {
+            background-color:index.$color-white;
+            color:index.$color-black;
+        }
+        @include index.for-size(screen-md) {
+            font-size:index.$h4;
+            margin:0 0.5em 0 0;
+        }
+        @media (min-width:992px) {
+            font-size: index.$h3;
+        }
+    }
+    ul li {
+        list-style: disc;
+    }
 }
 
 #portfolio {
-
+    .grid-item {
+        .overlay {
+            @include index.position(absolute, 0, 0, 0, 0, -1);
+            height:100%;
+            opacity:0;
+            transition: all index.$transition-normal ease-in-out;
+            visibility:hidden;
+            width:100%;
+            background-color: rgba(#293462, 0.5);
+        }
+        .btn {
+            background-color:index.$color-white;
+            border:3px solid index.$color-white;
+            color:index.$color-delft-blue;
+            font-family: index.$font-headings;
+            max-width:90%;
+            overflow:hidden;
+            position:relative;
+            transition: all index.$transition-slow;
+            z-index:2;
+            transform:scale(0.75);
+        }
+        &:hover {
+            transform:scale(0.95);
+            .overlay {
+                opacity:1;
+                visibility:visible;
+                z-index:1;
+            }
+            button {
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+    }
 }
 
 #testimonials {
+    background-color:index.$color-primary;
+    overflow-x:hidden;
+    @include index.for-size(screen-md) {
+        background-color:transparent;
+    }
+    .content {
+        position:relative;
+        @include index.for-size(screen-md) {
+            &:before {
+                background-color:index.$color-primary;
+                content:'';
+                height:100%;
+                position:absolute;
+                left:100%;
+                top:0;
+                width:100%;
+            }
+        }
+    }
+    .inner {
+        position:relative;
+        @include index.flex-row;
+        @include index.flex-m-center;
+        @include index.flex-wrap;
+    }
+    .carousel {
+        overflow-x:hidden;
+        position:relative;
+        width:100%;
+        @include index.for-size(screen-md) {
+            width:calc(100% - 200px);
 
+        }
+    }
+    .radio {
+        padding:1em 0;
+        width:100%;
+        button {
+            @include index.flex-row;
+            @include index.flex-center;
+            background-color: rgba(index.$color-white, 0.8);
+            border-radius: 100%;
+            height:25px;
+            margin:0 5px;
+            padding:0;
+            transform:scale(0.8);
+            transition:transform index.$transition-fast ease-in, background-color index.$transition-fast ease-in; 
+            width:25px;
+            &.active {
+                transform:scale(1.25);
+                background-color: index.$color-white;
+            }
+        }
+    }
+    .slide {
+        opacity:0;
+        transition:visibility, opacity index.$transition-normal;
+        width:100%;
+        visibility:hidden;
+        &.active {
+            visibility:visible;
+            opacity:1;
+        }
+    }
+    .toggle {
+        @include index.flex-row;
+        @include index.flex-m-space-around;
+        padding:1em 0;
+        width:100%;
+    }
+    .prev,
+    .next {
+        background:index.$color-white;
+        border-radius:50%;
+        height:50px;
+        width:50px;
+        @include index.for-size(screen-md) {
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+        }
+        svg {
+            width:25px;
+            fill:index.$color-black;
+        }
+    }
+    .prev {
+        @include index.for-size(screen-md) {
+            left:2.5%;
+        }
+    }
+    .next {
+        @include index.for-size(screen-md) {
+            right:2.5%;
+        }
+    }
 }
 
 #contact {
-    
+    svg {
+        width:50px
+    }
 }

@@ -15,63 +15,83 @@ $n: 13;
 .grid,
 .grid-inline {
     gap:1em;
-    grid-template: repeat(12, 1fr) / 1fr;
-    grid-template-rows:2;
-    grid-template-areas:
-        "grid-item-1"
-        "grid-item-2"
-        "grid-item-3"
-        "grid-item-4"
-        "grid-item-5"
-        "grid-item-6"
-        "grid-item-7"
-        "grid-item-8"
-        "grid-item-9"
-        "grid-item-10"
-        "grid-item-11"
-        "grid-item-12"
-        "grid-item-13";
-    @include index.for-size(screen-sm) {
-        grid-template: repeat(6, 1fr) / repeat(2, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+    grid-template-areas: 
+        "grid-item-1 grid-item-2"
+        "grid-item-3 grid-item-4";
+    #portfolio & {
+        grid-gap:3em;
+        grid-template: repeat(13, 1fr) / 1fr;
         grid-template-areas:
-            "grid-item-1 grid-item-2"
-            "grid-item-3 grid-item-4"
-            "grid-item-5 grid-item-6"
-            "grid-item-7 grid-item-8"
-            "grid-item-9 grid-item-10"
-            "grid-item-11 grid-item-12"
-            "grid-item-13 none";
-    }
-    @include index.for-size(screen-md) {
-        grid-template: repeat(4, 1fr) / repeat(3, 1fr);
-        grid-template-areas:
-            "grid-item-1 grid-item-2 grid-item-3"
-            "grid-item-4 grid-item-5 grid-item-6"
-            "grid-item-7 grid-item-8 grid-item-9"
-            "grid-item-10 grid-item-11 grid-item-12"
-            "grid-item-13 none none";
-    }
-    @include index.for-size(screen-lg) {
-        grid-template: repeat(7, calc(1280px / 3)) / repeat(3, calc(1280px / 3));
-        grid-template-areas:
+            "grid-item-1"
+            "grid-item-2"
+            "grid-item-3"
+            "grid-item-4"
+            "grid-item-5"
+            "grid-item-6"
+            "grid-item-7"
+            "grid-item-8"
+            "grid-item-9"
+            "grid-item-10"
+            "grid-item-11"
+            "grid-item-12"
+            "grid-item-13";
+        // @include index.for-size(screen-sm) {
+        @media all and (min-width:576px) {
+            grid-template: repeat(7, 1fr) / repeat(4, 1fr);
+            grid-template-areas:
+                "grid-item-1 grid-item-1 grid-item-2 grid-item-2"
+                "grid-item-3 grid-item-3 grid-item-4 grid-item-4"
+                "grid-item-5 grid-item-5 grid-item-6 grid-item-6"
+                "grid-item-7 grid-item-7 grid-item-8 grid-item-8"
+                "grid-item-9 grid-item-9 grid-item-10 grid-item-10"
+                "grid-item-11 grid-item-11 grid-item-12 grid-item-12"
+                "grid-item-13 grid-item-13 none none";
+        }
+        @include index.for-size(screen-md) {
+            grid-template: repeat(6, 1fr) / repeat(3, 1fr);
+            grid-template-areas:
+                "grid-item-1 grid-item-2 grid-item-2"
+                "grid-item-7 grid-item-7 grid-item-4"
+                "grid-item-5 grid-item-10 grid-item-3"
+                "grid-item-6 grid-item-6 grid-item-11"
+                "grid-item-9 grid-item-8 grid-item-8"
+                "grid-item-12 grid-item-12 grid-item-13";
+        }
+        @include index.for-size(screen-lg) {
+            grid-template: repeat(6, minmax(315px, 545px)) / repeat(3,1fr);
+            grid-template-areas:
             "grid-item-1 grid-item-2 grid-item-2"
-            "grid-item-4 grid-item-4 grid-item-5"
-            "grid-item-4 grid-item-4 grid-item-8"
-            "grid-item-7 grid-item-6 grid-item-6"
-            "grid-item-3 grid-item-6 grid-item-6"
-            "grid-item-9 grid-item-10 grid-item-11"
+            "grid-item-7 grid-item-7 grid-item-4"
+            "grid-item-5 grid-item-10 grid-item-3"
+            "grid-item-6 grid-item-6 grid-item-11"
+            "grid-item-9 grid-item-8 grid-item-8"
             "grid-item-12 grid-item-12 grid-item-13";
+        }
+    }
+    #testimonials & {
+        grid-gap:0;
+        grid-template:1fr / repeat(3, 100%);
+        grid-template-areas: "grid-item-1 grid-item-2 grid-item-3";
+    }
+    #work-history & {
+        grid-gap:0;
+        grid-template: none;
+        grid-auto-rows: 1fr;
+        grid-auto-columns: 100%;
+        grid-template-areas:
+            "grid-item-1 grid-item-2 grid-item-3";
+        overflow-x:hidden;
     }
 }
 
 .grid-item {
     @include index.flex-col;
     @include index.flex-center;
-    @include index.floating-box;
     text-align:center;
-    // padding:20px;
-    margin:20px;
-    // border:1px solid rgba(index.$color-black, 0.4);
+    padding:20px;
+    // margin:20px;
+    border:1px solid rgba(index.$color-black, 0.4);
     @for $i from 1 through $n {
         &.grid-item-#{$i} {
             grid-area: grid-item-#{$i};
@@ -80,7 +100,6 @@ $n: 13;
     picture {
         width:100%;
         height:100%;
-        // border:1px solid index.$color-black;
         source,
         img {
             width:100%;
@@ -89,13 +108,43 @@ $n: 13;
             object-position: top left;
         }
     }
-    &.grid-item-1,
-    &.grid-item-8 {
-        picture {
+    #portfolio & {
+        @include index.floating-box;
+        border:0;
+        padding:0;
+        transition:all index.$transition-normal ease-in-out;
+        // &.grid-item-1 {
+        //     source,
+        //     img {
+        //         object-position:25% 0%;
+        //     }
+        // }
+        &.grid-item-11,
+        &.grid-item-13 {
             source,
             img {
-                object-position: top center;
+                object-position:25% 0%;
             }
         }
+        &.grid-item-13 {
+            @media (min-width:576px) and (max-width:index.$screen-md-px) {
+                grid-column-start: 2;
+                grid-column-end: 4;
+            }
+        }
+
+    }
+    #testimonials & {
+        border:none;
+        &.grid-item-1 {
+
+        }
+    }
+    #work-history & {
+        @include index.flex-c-start;
+        @include index.flex-m-start;
+        border:none;
+        padding:2em 0;
+        text-align:left;
     }
 }
