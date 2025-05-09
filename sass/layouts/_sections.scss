@@ -16,6 +16,12 @@ main {
 }
 
 #about-me {
+    #silhouette {
+        width:100%;
+        max-width:90%;
+        position:relative;
+        z-index:5;
+    }
     .content {
         background-color:#56efff;
         position:relative;
