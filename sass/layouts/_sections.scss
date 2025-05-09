@@ -1,5 +1,9 @@
 @use '../abstracts/index';
 
+main {
+    padding-top:84px;
+}
+
 .section {
     margin:0 0 50px;
     @include index.for-size(screen-md) {
@@ -12,7 +16,23 @@
 }
 
 #about-me {
-
+    .content {
+        background-color:#56efff;
+        position:relative;
+        padding:2em 2em 2em 0;
+        &:before {
+            background-color:#56efff;
+            content:'';
+            height:100%;
+            position:absolute;
+            right:100%;
+            top:0;
+            width:100%;
+        }
+        h2 {
+            margin-top:0;
+        }
+    }
 }
 
 #work-history {
@@ -125,13 +145,15 @@
         }
     }
     .inner {
-        position:relative;
         @include index.flex-row;
         @include index.flex-m-center;
         @include index.flex-wrap;
+        padding:2em 0;
+        position:relative;
     }
     .carousel {
         overflow-x:hidden;
+        padding:0 2em;
         position:relative;
         width:100%;
         @include index.for-size(screen-md) {
@@ -172,6 +194,7 @@
     .toggle {
         @include index.flex-row;
         @include index.flex-m-space-around;
+        
         padding:1em 0;
         width:100%;
     }

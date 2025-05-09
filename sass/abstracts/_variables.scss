@@ -10,6 +10,15 @@ $font-body: 18;
 $font-body-px: $font-body + px;
 $font-serif: serif;
 $font-sans-serif: sans-serif;
+$font-bebas-neue: "Bebas Neue";
+$font-bungee-shade: "Bungee Shade";
+$font-courier-prime: "Courier Prime";
+$font-playfair: "Playfair";
+$font-rubik-doodle-shadow: "Rubik Doodle Shadow";
+$font-shadows-light: "Shadows Into Light Two";
+$font-sofia-sans: "Sofia Sans";
+$font-source-code-pro: "Source Code Pro";
+
 // $font-web: 'Roboto', $font-sans-serif;
 $font-web: 'Courier Prime', $font-sans-serif;
 $font-headings: 'Bebas Neue', $font-web;
@@ -35,6 +44,14 @@ $color-grey-dark: #eee;
 $color-tea-green: #CFE0C3;
 $color-delft-blue: #3d405b;
 $color-isabelline: #F6F0ED;
+
+// ------------------------------------
+// Test Colors
+// ------------------------------------
+
+$color-light-blue-1: #42eeff;
+$color-light-blue-2: #56efff;
+
 $color-black: #000;
 $color-white: #FFF;
 $color-link :$color-primary;

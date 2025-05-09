@@ -13,6 +13,10 @@
     display:table;
 }
 
+// -----------------------------
+// Screen Reader classes
+// -----------------------------
+
 .sr-only {
     border:0;
     clip: rect(0 0 0 0);
@@ -23,6 +27,10 @@
     position: absolute;
     width: 1px;
 }
+
+// -----------------------------
+// Hide/Reveal based on screen-size
+// -----------------------------
 
 .hide-xs { 
     @media (max-width:480px) {
@@ -65,7 +73,43 @@
     }
 }
 
+// -----------------------------
+// Text Orientation
+// -----------------------------
+
 .text-left {text-align:left;}
 .text-center {text-align:center;}
 .text-right {text-align:right;}
 .text-small {font-size:0.85rem;}
+
+// -----------------------------
+// Rounded corners
+// -----------------------------
+
+$border-radius: 10px;
+
+.from-left {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}
+
+.from-left-top {
+    border-bottom-right-radius: $border-radius;
+}
+
+.from-left-bottom {
+    border-top-right-radius: $border-radius;
+}
+
+.from-right {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+}
+
+.from-right-top {
+    border-bottom-left-radius: $border-radius;
+}
+
+.from-right-bottom {
+    border-top-left-radius: $border-radius;
+}

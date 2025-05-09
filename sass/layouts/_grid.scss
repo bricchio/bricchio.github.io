@@ -19,6 +19,26 @@ $n: 13;
     grid-template-areas: 
         "grid-item-1 grid-item-2"
         "grid-item-3 grid-item-4";
+    #contact & {
+        grid-template:repeat(4,1fr) / 1fr;
+        grid-template-areas:
+            "grid-item-1"
+            "grid-item-2"
+            "grid-item-3"
+            "grid-item-4";
+        width:100%;
+        @include index.for-size(screen-sm) {
+            grid-template:repeat(2,1fr) / repeat(2,1fr);
+            grid-template-areas:
+                "grid-item-1 grid-item-2"
+                "grid-item-3 grid-item-4";
+        }
+        @include index.for-size(screen-md) {
+            grid-template:1fr / repeat(4,1fr);
+            grid-template-areas:
+                "grid-item-1 grid-item-2 grid-item-3 grid-item-4";
+        }
+    }
     #portfolio & {
         grid-gap:3em;
         grid-template: repeat(13, 1fr) / 1fr;
@@ -107,6 +127,9 @@ $n: 13;
             object-fit:cover;
             object-position: top left;
         }
+    }
+    #contact & {
+        border:none;
     }
     #portfolio & {
         @include index.floating-box;
