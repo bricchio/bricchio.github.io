@@ -20,8 +20,8 @@ $font-sofia-sans: "Sofia Sans";
 $font-source-code-pro: "Source Code Pro";
 
 // $font-web: 'Roboto', $font-sans-serif;
-$font-web: 'Courier Prime', $font-sans-serif;
-$font-headings: 'Bebas Neue', $font-web;
+$font-web: $font-source-code-pro, $font-sans-serif;
+$font-headings: 'Bungee Shade', $font-web;
 // $font-headings: $font-web;
 
 $h1: math.div(36, $font-base) + em;
@@ -45,6 +45,7 @@ $color-tea-green: #CFE0C3;
 $color-delft-blue: #3d405b;
 $color-isabelline: #F6F0ED;
 
+
 // ------------------------------------
 // Test Colors
 // ------------------------------------
@@ -57,6 +58,11 @@ $color-white: #FFF;
 $color-link :$color-primary;
 $color-background: $color-secondary;
 $color-error: red;
+
+$color-blue-dark: #293462;
+$color-teal: #1CD6CE;
+$color-yellow: #FEDB39;
+$color-red: #D61C4E;
 
 // ------------------------------------
 // Transitions

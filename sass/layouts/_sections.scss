@@ -6,28 +6,60 @@ main {
 
 .section {
     margin:0 0 50px;
+    scroll-margin-top:100px;
     @include index.for-size(screen-md) {
         margin:0 0 75px;
+    }
+    h2 {
+        font-size: 3.5em;
+    }
+    .content {
+        &:before {
+            z-index:-1;
+        }
     }
 }
 
 #banner {
-    @include index.position(fixed,0,0,unset,0,500);
+    @include index.position(relative,0,0,unset,0,0);
+    margin-bottom:0;
+    h1 {
+        font-size:2.25em;
+        margin-bottom:0;
+        @include index.for-size(screen-md) {
+            font-size:3.25em;
+        }
+    }
+    h2 {
+        // font-family: index.$font-bebas-neue, index.$font-sans-serif;
+        // font-family: index.$font-bungee-shade, index.$font-sans-serif;
+        // font-family: index.$font-courier-prime, index.$font-sans-serif;
+        // font-family: index.$font-playfair, index.$font-sans-serif;
+        // font-family: index.$font-rubik-doodle-shadow, index.$font-sans-serif;
+        // font-family: index.$font-shadows-light, index.$font-sans-serif;
+        // font-family: index.$font-sofia-sans, index.$font-sans-serif;
+        font-family: index.$font-source-code-pro, index.$font-sans-serif;
+        font-size:1.5em;
+        @include index.for-size(screen-md) {
+            font-size:2em;
+        }
+    }
 }
 
+#silhouette {
+    width:100%;
+    max-width:275px;
+    position:relative;
+    z-index:5;
+}
 #about-me {
-    #silhouette {
-        width:100%;
-        max-width:90%;
-        position:relative;
-        z-index:5;
-    }
     .content {
-        background-color:#56efff;
+        // background-color:#56efff;
+        background-color:#FEDB39;
         position:relative;
         padding:2em 2em 2em 0;
         &:before {
-            background-color:#56efff;
+            background-color:#FEDB39;
             content:'';
             height:100%;
             position:absolute;
@@ -42,7 +74,7 @@ main {
 }
 
 #work-history {
-    background-color:index.$color-grey-light;
+    background-color:index.$color-teal;
     @include index.for-size(screen-md) {
         background-color:transparent;
     }
@@ -50,9 +82,9 @@ main {
         position:relative;
         padding:2em 0;
         @include index.for-size(screen-md) {
-            padding:2em;
+            padding:2em 2em 2em 0;
             &:before {
-                background-color:index.$color-grey-light;
+                background-color:index.$color-teal;
                 content:'';
                 height:100%;
                 position:absolute;
@@ -64,19 +96,31 @@ main {
     }
     .toggle {
         @include index.flex-col;
+        padding-left:10px;
         @include index.for-size(screen-md) {
             @include index.flex-row;
         }
     }
     .tab {
-        font-family: index.$font-headings;
+        background-color:index.$color-black;
+        box-shadow:0px 0px index.$color-black;
+        color:index.$color-white;
+        font-family: index.$font-bebas-neue;
         font-size:index.$h3;
         margin: 0.25em 0;
         padding-left:0.5em;
         padding-right:0.5em;
         transition: all index.$transition-normal ease-out;
+        box-shadow:0px 0px index.$color-black;
+        &:hover {
+            background-color:index.$color-white;
+            box-shadow:-5px 5px index.$color-black;
+            color:index.$color-black;
+            cursor:pointer;
+        }
         &.active {
             background-color:index.$color-white;
+            box-shadow:-5px 5px index.$color-black;
             color:index.$color-black;
         }
         @include index.for-size(screen-md) {
@@ -107,7 +151,7 @@ main {
             background-color:index.$color-white;
             border:3px solid index.$color-white;
             color:index.$color-delft-blue;
-            font-family: index.$font-headings;
+            font-family: index.$font-bebas-neue;
             max-width:90%;
             overflow:hidden;
             position:relative;
@@ -130,17 +174,35 @@ main {
     }
 }
 
-#testimonials {
-    background-color:index.$color-primary;
+#reviews {
+    background-color:index.$color-red;
     overflow-x:hidden;
     @include index.for-size(screen-md) {
         background-color:transparent;
+    }
+    h2 {
+        color:index.$color-white;
+    }
+    .column-1 {
+        position:relative;
+        &:before {
+            background:index.$color-red;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
+            content:'';
+            height:100%;
+            left:-1em;
+            position:absolute;
+            top:0;
+            width:1em;
+            z-index: -1;
+        }
     }
     .content {
         position:relative;
         @include index.for-size(screen-md) {
             &:before {
-                background-color:index.$color-primary;
+                background-color:index.$color-red;
                 content:'';
                 height:100%;
                 position:absolute;
@@ -152,7 +214,7 @@ main {
     }
     .inner {
         @include index.flex-row;
-        @include index.flex-m-center;
+        @include index.flex-m-start;
         @include index.flex-wrap;
         padding:2em 0;
         position:relative;
@@ -163,8 +225,10 @@ main {
         position:relative;
         width:100%;
         @include index.for-size(screen-md) {
-            width:calc(100% - 200px);
-
+            // width:calc(91.66666667% - 200px);
+            width:calc(100% - 140px);
+            // margin-left:16.66666667%;
+            margin-left:8.33333333%;
         }
     }
     .radio {
@@ -175,15 +239,20 @@ main {
             @include index.flex-center;
             background-color: rgba(index.$color-white, 0.8);
             border-radius: 100%;
+            box-shadow:0px 0px index.$color-black;
             height:25px;
             margin:0 5px;
             padding:0;
             transform:scale(0.8);
-            transition:transform index.$transition-fast ease-in, background-color index.$transition-fast ease-in; 
+            transition:all index.$transition-fast ease-in; 
             width:25px;
+            &:hover,
             &.active {
-                transform:scale(1.25);
                 background-color: index.$color-white;
+                box-shadow:0px 5px index.$color-black;
+                transform:scale(1.25);
+            }
+            &.active {
             }
         }
     }
@@ -222,12 +291,13 @@ main {
     }
     .prev {
         @include index.for-size(screen-md) {
-            left:2.5%;
+            // left:8.33333333%
+            left:10px;
         }
     }
     .next {
         @include index.for-size(screen-md) {
-            right:2.5%;
+            right:10px;
         }
     }
 }

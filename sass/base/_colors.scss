@@ -1,5 +1,13 @@
 @use '../abstracts/index';
 
+:root {
+    --color-teal: #1CD6CE;
+    --color-blue-dark: #293462;
+    --color-yellow: #FEDB39;
+    --color-red: #D61C4E;
+}
+
+
 // ------------------------------------
 // Font colors 
 // ------------------------------------
@@ -19,3 +27,20 @@
 .bg-grey-light {background-color:index.$color-grey-light;}
 .bg-grey-medium {background-color:index.$color-grey-medium;}
 .bg-grey-dark {background-color:index.$color-grey-dark;}
+
+.bg-blue-dark {background-color:index.$color-blue-dark;}
+.bg-teal {background-color:index.$color-teal;}
+.bg-yellow {background-color:index.$color-yellow;}
+.bg-red {background-color:index.$color-red;}
+
+
+// ------------------------------------
+// Color ribbon
+// ------------------------------------
+
+.color-splash {
+    .color-tile {
+        flex: 1 1 25%;
+        height:10px;
+    }
+}

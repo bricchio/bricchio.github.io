@@ -14,13 +14,21 @@
     </head>
     <body x-data="{ isOpen: false }" x-init="isOpen = false":class="isOpen ? 'active' : '' " >
         <div id="header">
+            <div class="color-splash flex-row">
+                <div class="color-tile bg-blue-dark"></div>
+                <div class="color-tile bg-yellow"></div>
+                <div class="color-tile bg-teal"></div>
+                <div class="color-tile bg-red"></div>
+            </div>
             <div class="container flex-row flex-m-space-between flex-c-center">
-                <div class="header-logo">
+                <div class="header-logo flex-row flex-nowrap">
                     <div class="name-line">
-                        <span class="keep">B</span><span class="fade">en</span>
+                        <span class="keep" style="font-family:'Bungee Shade';font-size: 2rem;">B</span>
+                        <!-- <span class="fade" style="font-weight:700;font-size: 1.25em;">en&nbsp;</span> -->
                     </div>
                     <div class="name-line">
-                        <span class="keep">R</span><span class="fade">icchio</span>
+                        <span class="keep" style="font-family:'Bungee Shade';font-size: 2rem;">R</span>
+                        <!-- <span class="fade" style="font-weight:700;font-size: 1.25em;">icchio</span> -->
                     </div>
                 </div>
                 <div :class="isOpen ? 'active header-links' : 'header-links' " x-data="{
@@ -28,31 +36,37 @@
                         {
                             text: 'Home',
                             url: '/index.html',
+                            color: 'white',
                         },
                         {
                             text: 'About Me',
                             url: '#about-me',
+                            color: 'yellow',
                         },
                         {
                             text: 'Projects',
                             url: '#portfolio',
+                            color: 'blue',
                         },
                         {
                             text: 'Work History',
                             url: '#work-history',
+                            color: 'teal',
                         },
                         {
-                            text: 'Testimonials',
-                            url: '#testimonials',
+                            text: 'Reviews',
+                            url: '#reviews',
+                            color: 'red',
                         },
                         {
                             text: 'Contact',
                             url: '#contact',
+                            color: 'white',
                         },
                     ],
                 }">
                     <template x-for="link in headerLinks">
-                        <a :href="link.url" x-text="link.text" @click="isOpen == true && window.innerWidth < 992 ? isOpen = false : '' "></a>
+                        <a :class="'btn btn-' + link.color" :href="link.url" x-text="link.text" @click="isOpen == true && window.innerWidth < 992 ? isOpen = false : '' "></a>
                     </template>
                 </div>
                 <div :class="isOpen ? 'active hamburger' : 'hamburger' " @click="isOpen = !isOpen">
@@ -64,15 +78,23 @@
         </div>
         <main>
             <section class="section" id="banner">
-                <div class="img-placeholder"></div>
+                <div class="container flex-row pt2">
+                    <div class="col-12-xs col-3-sm col-4-md flex-col flex-c-start">
+                        <img id="silhouette" src="/image-convert/webp/silhouette-dark-blue.webp" />
+                    </div>
+                    <div class="col-12-xs col-9-sm col-8-md flex-col flex-c-start flex-m-center">
+                        <h1>Ben Ricchio</h1>
+                        <h2>Front-End Web Developer</h2>
+                        <a class="btn" href="#about-me">Learn more</a>
+                    </div>
+                </div>
             </section>
             <section class="section flex-row" id="about-me">
                 <div class="container flex-row flex-wrap">
-                    <div class="flex-row flex-c-center col-12-xs col-3-lg">
-                        <img id="silhouette" src="/image-convert/webp/transparent-shadow.webp" />
+                    <div class="column column-1 flex-row flex-c-center col-12-xs col-4-lg">
+                        <h2>About <br>Me</h2>
                     </div>
-                    <div class="content col-12-xs col-9-lg from-left-top">
-                        <h2>About Me</h2>
+                    <div class="column column-2 content col-12-xs col-8-lg from-left">
                         <p>Welcome to my page! I'm Ben, I have been in web development for 10 years, 
                             building career websites from scratch for hundreds of customers across different 
                             industries. I have been fortunate to have responsibility for both creative-control
@@ -175,7 +197,7 @@
                 <div class="container">
                     <h2>Projects</h2>
                     <p>The tiles below are a sampling of the branded sites I built at Jobvite.  Click on any tile to view the complete site.</p>
-                    <p><span class="text-small">(<strong>Please note: </strong>If a customer is no longer using Jobvite, the tile will point to their archived-pages on <a href="https://web.archive.org">web.archive.org</a>.</span>)</p>
+                    <p><span class="text-small"><span class="btn" style="display:inline-block;font-size:1.1em;">Fine print:</span> If a customer is no longer using Jobvite, the tile will point to their archived-pages on <a href="https://web.archive.org">web.archive.org</a>.</span>)</p>
                     <div class="grid">
                         <template x-for="company of companies">
                             <div :class="'grid-item grid-item-' + company.item + ' box floating'">
@@ -237,9 +259,11 @@
                 prev: function() { this.selected > 0 ? --this.selected : this.selected = this.jobs.length - 1 },
             }">
                 <div class="container flex-row flex-wrap">
-                    <div class="content col-12-xs col-10-md bg-grey-light pb0 from-left">
+                    <div class="column column-1 flex-row flex-c-center col-12-xs col-4-md hide-xs hide-sm">
+                        <h2>Work <br>History</h2>
+                    </div>
+                    <div class="column column-2 content col-12-xs col-8-md bg-teal from-left">
                         <div class="inner">
-                            <h2>Work History</h2>
                             <div class="toggle flex-row flex-m-start flex-nowrap w-100">
                                 <template x-for="(job, index) in jobs">
                                     <button :class="selected == index ? 'tab active' : 'tab' " @click="selected = index" x-text="job.title">
@@ -260,11 +284,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12-xs col-2-md hide-xs hide-sm">
-                    </div>
+                    
                 </div>
             </section>
-            <section class="section" id="testimonials" x-data="{
+            <section class="section" id="reviews" x-data="{
                 testimonies: [
                     {
                         item: 1,
@@ -289,10 +312,10 @@
                 prev: function() { this.selected > 0 ? --this.selected : this.selected = this.testimonies.length - 1 },
             }">
                 <div class="container flex-row flex-wrap">
-                    <div class="col-12-xs col-2-md hide-xs hide-sm">
-                        <p>&nbsp;</p>
+                    <div class="column column-1 flex-row flex-c-center col-12-xs col-4-lg bg-red">
+                        <h2>Reviews</h2>
                     </div>
-                    <div class="content col-12-xs col-10-md bg-primary from-right">
+                    <div class="column column-2 content col-12-xs col-8-lg bg-red">
                         <div class="inner">
                             <div class="carousel grid">
                                 <template x-for="(testimony, index) in testimonies" :key="index">
@@ -309,7 +332,7 @@
                                     </button>
                                 </template>
                             </div>
-                            <div class="toggle hide-md hide-lg">
+                            <div class="toggle">
                                 <button class="btn flex-row flex-center prev" @click="prev()">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg>
                                     <span class="sr-only">Previous</span>
@@ -325,23 +348,37 @@
             </section>
             <section class="section" id="contact">
                 <div class="container flex-row flex-wrap">
-                    <div class="grid">
-                        <a class="grid-item grid-item-1 flex-col flex-center" href="" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M302.8 312C334.9 271.9 408 174.6 408 120C408 53.7 354.3 0 288 0S168 53.7 168 120c0 54.6 73.1 151.9 105.2 192c7.7 9.6 22 9.6 29.6 0zM416 503l144.9-58c9.1-3.6 15.1-12.5 15.1-22.3L576 152c0-17-17.1-28.6-32.9-22.3l-116 46.4c-.5 1.2-1 2.5-1.5 3.7c-2.9 6.8-6.1 13.7-9.6 20.6L416 503zM15.1 187.3C6 191 0 199.8 0 209.6L0 480.4c0 17 17.1 28.6 32.9 22.3L160 451.8l0-251.4c-3.5-6.9-6.7-13.8-9.6-20.6c-5.6-13.2-10.4-27.4-12.8-41.5l-122.6 49zM384 255c-20.5 31.3-42.3 59.6-56.2 77c-20.5 25.6-59.1 25.6-79.6 0c-13.9-17.4-35.7-45.7-56.2-77l0 194.4 192 54.9L384 255z"/></svg>
-                            <span class="mt1">Carmel, IN</span>
-                        </a>
-                        <a class="grid-item grid-item-2 flex-col flex-center" href="mailto:bricchio@gmail.com" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                            <span class="mt1">bricchio@gmail.com</span>
-                        </a>
-                        <a class="grid-item grid-item-3 flex-col flex-center" href="https://github.com/bricchio" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @font<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
-                            <span class="mt1">GitHub</span>
-                        </a>
-                        <a class="grid-item grid-item-4 flex-col flex-center" href="" target="_blank" rel="noopener noreferrer">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
-                            <span class="mt1">LinkedIn</span>
-                        </a>
+                    <div class="column column-1 flex-row flex-c-center col-12-xs col-4-lg">
+                        <h2>Contact</h2>
+                    </div>
+                    <div class="column column-2 flex-row flex-c-center col-12-xs col-8-lg">
+                        <div class="grid">
+                            <div class="grid-item grid-item-1 flex-col flex-center" href="" target="_blank" rel="noopener noreferrer">
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"> -->
+                                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                    <!-- <path d="M302.8 312C334.9 271.9 408 174.6 408 120C408 53.7 354.3 0 288 0S168 53.7 168 120c0 54.6 73.1 151.9 105.2 192c7.7 9.6 22 9.6 29.6 0zM416 503l144.9-58c9.1-3.6 15.1-12.5 15.1-22.3L576 152c0-17-17.1-28.6-32.9-22.3l-116 46.4c-.5 1.2-1 2.5-1.5 3.7c-2.9 6.8-6.1 13.7-9.6 20.6L416 503zM15.1 187.3C6 191 0 199.8 0 209.6L0 480.4c0 17 17.1 28.6 32.9 22.3L160 451.8l0-251.4c-3.5-6.9-6.7-13.8-9.6-20.6c-5.6-13.2-10.4-27.4-12.8-41.5l-122.6 49zM384 255c-20.5 31.3-42.3 59.6-56.2 77c-20.5 25.6-59.1 25.6-79.6 0c-13.9-17.4-35.7-45.7-56.2-77l0 194.4 192 54.9L384 255z"/> -->
+                                <!-- </svg> -->
+                                 <img src="" alt="Indiana" />
+                                <span class="mt1">Carmel, IN</span>
+                            </div>
+                            <a class="grid-item grid-item-2 flex-col flex-center" href="mailto:bricchio@gmail.com" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                                <span class="mt1">bricchio@gmail.com</span>
+                            </a>
+                            <a class="grid-item grid-item-3 flex-col flex-center" href="https://github.com/bricchio" target="_blank" rel="noopener noreferrer">
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> -->
+                                    <!--!Font Awesome Free 6.7.2 by @font<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"> -->
+                                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                                    <!-- <path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/> -->
+                                <!-- </svg> -->
+                                <img src="" alt="GitHub" />
+                                <span class="mt1">github.com/bricchio</span>
+                            </a>
+                            <a class="grid-item grid-item-4 flex-col flex-center" href="" target="_blank" rel="noopener noreferrer">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
+                                <span class="mt1">linkedin.com/in/ben-ricchio</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -353,6 +390,12 @@
                         <script type="text/javascript">document.getElementById('current-year').textContent = new Date().getFullYear();</script>
                     </span>
                 </p>
+            </div>
+            <div class="color-splash flex-row">
+                <div class="color-tile bg-blue-dark"></div>
+                <div class="color-tile bg-yellow"></div>
+                <div class="color-tile bg-teal"></div>
+                <div class="color-tile bg-red"></div>
             </div>
         </div>
     </body>

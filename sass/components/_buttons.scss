@@ -3,15 +3,60 @@
 button,
 .btn {
     @include index.flex-center;
-    background-color: index.$color-primary;
     background-image: none;
     border:1px solid index.$color-black;
     border-radius: index.$border-radius;
-    color: index.$color-white;
-    font-size: index.$font-body-px;
-    font-family: index.$font-web;
+    box-shadow:0px 0px index.$color-black;
+    color:index.$color-black;
+    font-size: 1.5em;
+    font-family: index.$font-bebas-neue;
+    line-height: 1;
+    padding:10px;
+    transition: all index.$transition-normal ease-out;
     width:auto;
     @include index.for-size(screen-md) {
         font-size:2rem;
+    }
+    &:hover {
+        box-shadow:-5px 5px index.$color-black;
+    }
+}
+.btn {
+    &-white {
+        &:hover {
+            background-color:index.$color-white;
+            border-color:index.$color-black;
+        }   
+    }
+    &-blue {
+        &:hover {
+            background-color:index.$color-blue-dark;
+            border-color:index.$color-blue-dark;
+            color:index.$color-white;
+        }
+    }
+    &-yellow {
+        &:hover {
+            background-color:index.$color-yellow;
+            border-color:index.$color-yellow;
+        }
+    }
+    &-teal {
+        &:hover {
+            background-color:index.$color-teal;
+            border-color:index.$color-teal;
+        }
+    }
+    &-red {
+        &:hover {
+        background-color:index.$color-red;
+        border-color:index.$color-red;
+        color:index.$color-white;
+        }
+    }
+    &-black {
+        &:hover {
+
+        }
     }
 }
