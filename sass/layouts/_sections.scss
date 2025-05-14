@@ -11,7 +11,20 @@ main {
         margin:0 0 75px;
     }
     h2 {
-        font-size: 3.5em;
+        margin-bottom:0;
+        font-size:2em;
+        br {
+            display:none;
+        }
+        @include index.for-size(screen-md) {
+            font-size: 3.5em;
+            br {
+                display:block;
+            }
+        }
+        @include index.for-size(screen-lg) {
+            margin-bottom:0.83em;
+        }
     }
     .content {
         &:before {
@@ -23,23 +36,57 @@ main {
 #banner {
     @include index.position(relative,0,0,unset,0,0);
     margin-bottom:0;
+    .container {
+        // padding-bottom:2em;
+        @include index.for-size(screen-sm) {
+            // padding-bottom:0;
+        }
+        @include index.for-size(screen-lg) {
+        }
+    }
+    .column-1 {
+        // height:100%;
+        // left:0;
+        // padding-bottom:2em;
+        // position:absolute;
+        // top:0;
+        // width:100%;
+        order:1;
+        @include index.for-size(screen-sm) {
+            position:relative;
+            // width:calc(100% * (4/12));
+            height:auto;
+        }
+        @media all and (min-width:576px) {
+            order:0;
+        }
+    }
+    .column-2 {
+        padding-bottom:2em;
+        order:0;
+        // @media all and (min-width:576px) {
+        @include index.for-size(screen-sm) {
+            order:1;
+        }
+        @include index.for-size(screen-md) {
+            padding-left:2em;
+        }
+        @include index.for-size(screen-lg) {
+            padding-left:0;
+        }
+    }
     h1 {
         font-size:2.25em;
         margin-bottom:0;
         @include index.for-size(screen-md) {
-            font-size:3.25em;
+            font-size:4em;
         }
     }
-    h2 {
-        // font-family: index.$font-bebas-neue, index.$font-sans-serif;
-        // font-family: index.$font-bungee-shade, index.$font-sans-serif;
-        // font-family: index.$font-courier-prime, index.$font-sans-serif;
-        // font-family: index.$font-playfair, index.$font-sans-serif;
-        // font-family: index.$font-rubik-doodle-shadow, index.$font-sans-serif;
-        // font-family: index.$font-shadows-light, index.$font-sans-serif;
-        // font-family: index.$font-sofia-sans, index.$font-sans-serif;
+    h1 + p {
         font-family: index.$font-source-code-pro, index.$font-sans-serif;
         font-size:1.5em;
+        font-weight:700;
+        margin-bottom:0.83em;
         @include index.for-size(screen-md) {
             font-size:2em;
         }
@@ -47,15 +94,39 @@ main {
 }
 
 #silhouette {
+    bottom:0;
+    left:auto;
+    max-width:150px;
+    opacity:0.5;
+    position: absolute;
+    right:0;
     width:100%;
-    max-width:275px;
-    position:relative;
-    z-index:5;
+    z-index:-1;
+    @include index.for-size(screen-sm) {
+        left:50%;
+        opacity:1;
+        right:auto;
+        transform:translateX(-50%);
+    }
+    @include index.for-size(screen-md) {
+        max-width:275px;
+        position:relative;
+        z-index:5;
+    }
 }
 #about-me {
+    .container {
+        @include index.from-left(index.$color-yellow, 10px);
+        &:before {
+            background-color:index.$color-yellow;
+            content:'';
+            position:absolute;
+            top:0;
+            width:100%;
+            left:-100%;
+        }
+    }
     .content {
-        // background-color:#56efff;
-        background-color:#FEDB39;
         position:relative;
         padding:2em 2em 2em 0;
         &:before {
@@ -71,28 +142,49 @@ main {
             margin-top:0;
         }
     }
+    .column-1,
+    .column-2 {
+    }
+    .column-1 {
+        br {
+            display:none;
+            @media all and (min-width:992px) {
+                display:block;
+            }
+        }
+    }
 }
 
 #work-history {
-    background-color:index.$color-teal;
-    @include index.for-size(screen-md) {
-        background-color:transparent;
+    .container {
+        @include index.from-left(index.$color-teal, 10px);
+        &:before {
+            background-color:index.$color-teal;
+            content:'';
+            height:100%;
+            position:absolute;
+            top:0;
+            left:-100%;
+            width:100%;
+        }
     }
     .content {
         position:relative;
         padding:2em 0;
         @include index.for-size(screen-md) {
             padding:2em 2em 2em 0;
-            &:before {
-                background-color:index.$color-teal;
-                content:'';
-                height:100%;
-                position:absolute;
-                right:100%;
-                top:0;
-                width:100%;
-            }
         }
+        .employer,
+        .tenure {
+            font-weight:700;
+        }
+        .employer {
+            font-size:1.5em;
+        }
+        .tenure {
+            font-size:1.15em;
+        }
+
     }
     .toggle {
         @include index.flex-col;
@@ -145,19 +237,23 @@ main {
             transition: all index.$transition-normal ease-in-out;
             visibility:hidden;
             width:100%;
-            background-color: rgba(#293462, 0.5);
+            background-color: rgba(#293462, 0.75);
         }
         .btn {
             background-color:index.$color-white;
             border:3px solid index.$color-white;
-            color:index.$color-delft-blue;
+            color:index.$color-black;
             font-family: index.$font-bebas-neue;
             max-width:90%;
             overflow:hidden;
+            padding:0.25em 0.5em;
             position:relative;
             transition: all index.$transition-slow;
             z-index:2;
             transform:scale(0.75);
+            .button-text {
+                font-weight:400;
+            }
         }
         &:hover {
             transform:scale(0.95);
@@ -166,51 +262,36 @@ main {
                 visibility:visible;
                 z-index:1;
             }
-            button {
+            .btn {
                 transform:scale(1);
                 opacity:1;
+                box-shadow:-5px 5px index.$color-black;
             }
         }
     }
 }
 
 #reviews {
-    background-color:index.$color-red;
-    overflow-x:hidden;
-    @include index.for-size(screen-md) {
-        background-color:transparent;
+    .container {
+        @include index.from-right(index.$color-red, 10px);
+        &:before {
+            background-color:index.$color-red;
+            content:'';
+            height:100%;
+            position:absolute;
+            right:-100%;
+            top:0;
+            width:100%;
+        }
     }
     h2 {
         color:index.$color-white;
     }
     .column-1 {
         position:relative;
-        &:before {
-            background:index.$color-red;
-            border-bottom-left-radius: 10px;
-            border-top-left-radius: 10px;
-            content:'';
-            height:100%;
-            left:-1em;
-            position:absolute;
-            top:0;
-            width:1em;
-            z-index: -1;
-        }
     }
     .content {
         position:relative;
-        @include index.for-size(screen-md) {
-            &:before {
-                background-color:index.$color-red;
-                content:'';
-                height:100%;
-                position:absolute;
-                left:100%;
-                top:0;
-                width:100%;
-            }
-        }
     }
     .inner {
         @include index.flex-row;
@@ -221,13 +302,12 @@ main {
     }
     .carousel {
         overflow-x:hidden;
-        padding:0 2em;
+        padding:0;
         position:relative;
         width:100%;
         @include index.for-size(screen-md) {
-            // width:calc(91.66666667% - 200px);
+            padding:0 2em;
             width:calc(100% - 140px);
-            // margin-left:16.66666667%;
             margin-left:8.33333333%;
         }
     }
@@ -291,7 +371,6 @@ main {
     }
     .prev {
         @include index.for-size(screen-md) {
-            // left:8.33333333%
             left:10px;
         }
     }
@@ -303,7 +382,30 @@ main {
 }
 
 #contact {
-    svg {
+    h2 {
+    }
+    .column-2 {
+        padding-top:2em;
+        width:100%;
+        @include index.for-size(screen-lg) {
+            width:calc(100% * (8/12));}
+        }
+    a {
+        color:index.$color-black;
+        font-weight:400;
+    }
+    svg,
+    img {
         width:50px
+    }
+    #email {
+        path {
+            fill:index.$color-black;
+        }
+    }
+    #linkedin {
+        path {
+            fill:index.$color-red;
+        }
     }
 }

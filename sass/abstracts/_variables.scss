@@ -82,9 +82,12 @@ $screen-sm-em: math.div($screen-sm, $font-base) + em;
 $screen-md: 769;
 $screen-md-px: $screen-md + px;
 $screen-md-em: math.div($screen-md, $font-base) + em;
-$screen-lg: 1280;
+$screen-lg: 992;
 $screen-lg-px: $screen-lg + px;
 $screen-lg-em: math.div($screen-lg, $font-base) + em;
+$screen-xl: 1280;
+$screen-xl-px: $screen-xl + px;
+$screen-xl-em: math.div($screen-xl, $font-base) + em;
 
 
 // ------------------------------------

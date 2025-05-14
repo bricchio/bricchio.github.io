@@ -29,3 +29,25 @@ window.addEventListener('scroll', function() {
         header.classList.remove('fixed');
     }
 });
+
+// function resizeWindow() {
+//     const headerLinks = document.getElementsByClassName('header-links');
+//     const headerButtons = document.getElementsByClassName('header-links > a');
+//     window.addEventListener('resize', function() {
+//         window.onresize = () => {
+//             if (window.innerWidth > 992 ) {
+//                 headerLinks.classList.remove('active');
+//                 headerButtons.classList.remove('active');
+//             }
+//         }
+//     });
+// }
+
+// let resizeTimeout;
+
+// window.addEventListener('resize', function() {
+//     clearTimeout(resizeTimeout);
+//     resizeTimeout = setTimeout(function() {
+//         resizeWindow}, 250)
+//     }
+// );

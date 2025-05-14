@@ -23,38 +23,44 @@ button,
 }
 .btn {
     &-white {
-        &:hover {
+        &:hover,
+        &.active {
             background-color:index.$color-white;
             border-color:index.$color-black;
         }   
     }
     &-blue {
-        &:hover {
+        &:hover,
+        &.active {
             background-color:index.$color-blue-dark;
             border-color:index.$color-blue-dark;
             color:index.$color-white;
         }
     }
     &-yellow {
-        &:hover {
+        &:hover,
+        &.active {
             background-color:index.$color-yellow;
             border-color:index.$color-yellow;
         }
     }
     &-teal {
-        &:hover {
+        &:hover,
+        &.active {
             background-color:index.$color-teal;
             border-color:index.$color-teal;
         }
     }
     &-red {
-        &:hover {
+        &:hover,
+        &.active {
         background-color:index.$color-red;
         border-color:index.$color-red;
         color:index.$color-white;
         }
     }
-    &-black {
+    &-black,
+    &.active {
         &:hover {
 
         }

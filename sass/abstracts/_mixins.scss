@@ -180,3 +180,34 @@
         position: absolute;
     }
 }
+
+// ------------------------------------
+// Sections with border-radius
+// ------------------------------------
+
+@mixin from-left($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}
+@mixin from-left-top($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-bottom-right-radius: $border-radius;
+}
+@mixin from-left-bottom($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-top-right-radius: $border-radius;
+}
+@mixin from-right($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+}
+@mixin from-right-top($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-bottom-left-radius: $border-radius;
+}
+@mixin from-right-bottom($bg-color, $border-radius) {
+    background-color:$bg-color;
+    border-top-left-radius: $border-radius;
+}

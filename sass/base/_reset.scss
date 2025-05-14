@@ -20,6 +20,7 @@ body {
     line-height:1.5;
     margin:0;
     min-height:100vh;
+    overflow-x:hidden;
     &.active {
         overflow-y:hidden;
     }
@@ -41,6 +42,7 @@ ol[role='list'] {
 }
 
 a {
-    color:index.$color-primary;
+    color:index.$color-red;
+    font-weight:700;
     text-decoration:none
 }
