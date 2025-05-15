@@ -65,7 +65,7 @@
                 }">
                     <template x-for="link in headerLinks">
                         <!-- <a :class="window.innerWidth < 992 ? 'btn btn-' + link.color + ' active' : 'btn btn-' + link.color" :href="link.url" x-text="link.text" @click="isOpen == true && window.innerWidth < 992 ? isOpen = false : '' "></a> -->
-                        <a :class="'btn btn-' + link.color" :href="link.url" x-text="link.text" @click="isOpen == true && window.innerWidth < 992 ? isOpen = false : '' "></a>
+                        <a :class="isOpen ? 'btn btn-' + link.color + ' active' : 'btn btn-' + link.color" :href="link.url" x-text="link.text" @click="isOpen == true && window.innerWidth < 992 ? isOpen = false : '' "></a>
                     </template>
                 </div>
                 <div :class="isOpen ? 'active hamburger' : 'hamburger' " @click="isOpen = !isOpen">

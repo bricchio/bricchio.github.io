@@ -17,7 +17,8 @@ button,
     @include index.for-size(screen-md) {
         font-size:2rem;
     }
-    &:hover {
+    &:hover,
+    &.active {
         box-shadow:-5px 5px index.$color-black;
     }
 }
