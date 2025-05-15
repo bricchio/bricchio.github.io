@@ -12,7 +12,7 @@
         <script defer src="/script.js" type="text/javascript"></script>
 
     </head>
-    <body x-data="{ isOpen: false }" x-init="isOpen = false":class="isOpen ? 'active' : '' " >
+    <body x-data="{ isOpen: false }" x-init="isOpen = false" :class="isOpen ? 'active' : '' " >
         <div id="header">
             <div class="color-splash flex-row">
                 <div class="color-tile bg-blue-dark"></div>
@@ -82,7 +82,7 @@
                         <img id="silhouette" src="/image-convert/webp/silhouette-dark-blue.webp" />
                     </div>
                     <div class="column column-2 col-12-xs col-7-sm col-8-md flex-col flex-c-start flex-m-center">
-                        <h1>Ben Ricchio</h1>
+                        <h1>Ben <br>Ricchio</h1>
                         <p>Front-End Web Developer</p>
                         <a class="btn" href="#about-me">Learn more</a>
                     </div>

@@ -7,6 +7,7 @@ main {
 .section {
     margin:0 0 50px;
     scroll-margin-top:100px;
+    overflow-x:hidden;
     @include index.for-size(screen-md) {
         margin:0 0 75px;
     }
@@ -36,25 +37,10 @@ main {
 #banner {
     @include index.position(relative,0,0,unset,0,0);
     margin-bottom:0;
-    .container {
-        // padding-bottom:2em;
-        @include index.for-size(screen-sm) {
-            // padding-bottom:0;
-        }
-        @include index.for-size(screen-lg) {
-        }
-    }
     .column-1 {
-        // height:100%;
-        // left:0;
-        // padding-bottom:2em;
-        // position:absolute;
-        // top:0;
-        // width:100%;
         order:1;
         @include index.for-size(screen-sm) {
             position:relative;
-            // width:calc(100% * (4/12));
             height:auto;
         }
         @media all and (min-width:576px) {
@@ -64,7 +50,6 @@ main {
     .column-2 {
         padding-bottom:2em;
         order:0;
-        // @media all and (min-width:576px) {
         @include index.for-size(screen-sm) {
             order:1;
         }
@@ -81,14 +66,20 @@ main {
         @include index.for-size(screen-md) {
             font-size:4em;
         }
-    }
-    h1 + p {
-        font-family: index.$font-source-code-pro, index.$font-sans-serif;
-        font-size:1.5em;
-        font-weight:700;
-        margin-bottom:0.83em;
-        @include index.for-size(screen-md) {
-            font-size:2em;
+        br {
+            display:block;
+            @media all and (min-width:576px) {
+                display:none;
+            }
+        }
+        & + p {
+            font-family: index.$font-source-code-pro, index.$font-sans-serif;
+            font-size:1.5em;
+            font-weight:700;
+            margin-bottom:0.83em;
+            @include index.for-size(screen-md) {
+                font-size:2em;
+            }
         }
     }
 }
