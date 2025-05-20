@@ -1,5 +1,14 @@
+@use '../abstracts/index';
+
 #footer {
     svg {
         width:50px;
+    }
+    #copyright {
+        text-align:center;
+        width:100%;
+        @include index.for-size(screen-sm) {
+            text-align:left;
+        }
     }
 }

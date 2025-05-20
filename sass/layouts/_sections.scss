@@ -220,6 +220,11 @@ main {
 }
 
 #portfolio {
+    margin:0;
+    padding-bottom:50px;
+    @include index.for-size(screen-md) {
+        padding-bottom:75px;
+    }
     .grid-item {
         .overlay {
             @include index.position(absolute, 0, 0, 0, 0, -1);
