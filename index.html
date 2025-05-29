@@ -297,18 +297,21 @@
                 testimonies: [
                     {
                         item: 1,
-                        name: '- Mai',
                         text: 'Ben was a highly motivated and independent learner. He readily adapted to new processes and quickly mastered scripting languages. His problem-solving skills were exceptional, and he consistently demonstrated persistence and a proactive approach to resolving challenges.',
+                        name: '- Mai',
+                        title: 'Senior Manager, Web Development',
                     },
                     {
                         item: 2,
-                        name: '- Doyle',
                         text: 'Beyond his technical expertise, Ben is a champion of best practices. He consistently identifies opportunities to improve workflows and ensure high-quality outcomes. His proactive attitude toward continuous improvement elevates the entire team.',
+                        name: '- Doyle',
+                        title: 'Senior UI Developer',
                     },
                     {
                         item: 3,
-                        name: '- Kevin',
                         text: 'Driven by a strong desire to learn and grow, I witnessed Ben’s progression from UI Support Specialist to UI Developer. He consistently advocated for best practices and actively identified opportunities to enhance processes.',
+                        name: '- Kevin',
+                        title: 'Senior UX Designer/Developer',
                     },
                 ],
                 transform:'',
@@ -326,8 +329,9 @@
                             <div class="carousel grid">
                                 <template x-for="(testimony, index) in testimonies" :key="index">
                                     <div :class="selected == index ? 'active slide text-white grid-item-' + testimony.item : 'slide text-white grid-item-' + testimony.item " :style=" 'transform: translateX(' + getTransform() + '%);' ">
-                                        <P class="h5" x-text="testimony.text"></h3>
-                                        <p class="h3" x-text="testimony.name"></h6>
+                                        <P class="h5" x-text="testimony.text"></p>
+                                        <p class="h3 m0" x-text="testimony.name"></p>
+                                        <p class="h5 mt0"><em x-text="testimony.title"></em></p>
                                     </div>
                                 </template>
                             </div>
